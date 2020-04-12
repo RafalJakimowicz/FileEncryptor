@@ -20,7 +20,6 @@ namespace WindowsFormsApp1
         string Password = "";
         List<string> files = new List<string>();
         const string SALT = "*sHa256";
-        int levels = 1;
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
 
         public Form1()
@@ -94,28 +93,25 @@ namespace WindowsFormsApp1
             //create a buffer (500mb) so only this amount will allocate in the memory and not the whole file
             byte[] buffer = new byte[536870912];
             int read;
-            for (int i = 0; i < levels; i++)
+            try
             {
-                try
+                while ((read = fsIn.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    while ((read = fsIn.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        Application.DoEvents(); // -> for responsive GUI, using Task will be better!
-                        cs.Write(buffer, 0, read);
-                    }
+                    Application.DoEvents(); // -> for responsive GUI, using Task will be better!
+                    cs.Write(buffer, 0, read);
+                }
 
-                    // Close up
-                    fsIn.Close();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
-                finally
-                {
-                    cs.Close();
-                    fsCrypt.Close();
-                }
+                // Close up
+                fsIn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                cs.Close();
+                fsCrypt.Close();
             }
         }
 
@@ -149,24 +145,21 @@ namespace WindowsFormsApp1
             int read;
             //500mb buffer
             byte[] buffer = new byte[536870912];
-            for (int i = 0; i < levels; i++)
+            try
             {
-                try
+                while ((read = cs.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    while ((read = cs.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        Application.DoEvents();
-                        fsOut.Write(buffer, 0, read);
-                    }
+                    Application.DoEvents();
+                    fsOut.Write(buffer, 0, read);
                 }
-                catch (CryptographicException ex_CryptographicException)
-                {
-                    Console.WriteLine("CryptographicException error: " + ex_CryptographicException.Message);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
+            }
+            catch (CryptographicException ex_CryptographicException)
+            {
+                Console.WriteLine("CryptographicException error: " + ex_CryptographicException.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             try
@@ -196,7 +189,7 @@ namespace WindowsFormsApp1
                     builder.Append(bytes[i].ToString("x2"));
                 }
                 return builder.ToString();
-            }       
+            }
         }
 
         private void Form1_DragEnter(object sender, DragEventArgs e)
@@ -381,11 +374,6 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            levels = (int)numLevels.Value;
         }
 
         private void Form1_Load(object sender, EventArgs e)
