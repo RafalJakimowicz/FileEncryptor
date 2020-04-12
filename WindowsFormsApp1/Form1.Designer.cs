@@ -37,6 +37,8 @@
             this.rbFileOrFolder = new System.Windows.Forms.RadioButton();
             this.rbDisc = new System.Windows.Forms.RadioButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.numLevels = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numLevels)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEncrypt
@@ -126,12 +128,36 @@
             this.progressBar1.Size = new System.Drawing.Size(374, 48);
             this.progressBar1.TabIndex = 8;
             // 
+            // numLevels
+            // 
+            this.numLevels.Location = new System.Drawing.Point(299, 212);
+            this.numLevels.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numLevels.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numLevels.Name = "numLevels";
+            this.numLevels.Size = new System.Drawing.Size(91, 20);
+            this.numLevels.TabIndex = 9;
+            this.numLevels.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numLevels.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 299);
+            this.Controls.Add(this.numLevels);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.rbDisc);
             this.Controls.Add(this.rbFileOrFolder);
@@ -147,6 +173,7 @@
             this.Text = "Form1";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
+            ((System.ComponentModel.ISupportInitialize)(this.numLevels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,6 +190,7 @@
         private System.Windows.Forms.RadioButton rbFileOrFolder;
         private System.Windows.Forms.RadioButton rbDisc;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.NumericUpDown numLevels;
     }
 }
 

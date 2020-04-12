@@ -19,7 +19,8 @@ namespace WindowsFormsApp1
         string FilePath = "";
         string Password = "";
         List<string> files = new List<string>();
-        string SALT = "*sHa256";
+        const string SALT = "*sHa256";
+        int levels = 1;
 
         public Form1()
         {
@@ -89,7 +90,7 @@ namespace WindowsFormsApp1
 
             FileStream fsIn = new FileStream(inputFile, FileMode.Open);
 
-            //create a buffer (10mb) so only this amount will allocate in the memory and not the whole file
+            //create a buffer (500mb) so only this amount will allocate in the memory and not the whole file
             byte[] buffer = new byte[536870912];
             int read;
 
@@ -143,7 +144,7 @@ namespace WindowsFormsApp1
             FileStream fsOut = new FileStream(outputFile, FileMode.Create);
 
             int read;
-            //10mb buffer
+            //500mb buffer
             byte[] buffer = new byte[536870912];
 
             try
@@ -240,6 +241,7 @@ namespace WindowsFormsApp1
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            numLevels.Enabled = false;
             progressBar1.Value = 0;
             try
             {
@@ -283,6 +285,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
+            numLevels.Enabled = true;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -292,6 +295,7 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
+            numLevels.Enabled = false;
             progressBar1.Value = 0;
             try
             {
@@ -333,6 +337,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
+            numLevels.Enabled = true;
         }
 
         private void btnChoose_Click(object sender, EventArgs e)
@@ -369,6 +374,11 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            levels = (int)numLevels.Value;
         }
     }
 }
