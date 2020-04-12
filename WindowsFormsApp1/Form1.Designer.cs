@@ -38,6 +38,10 @@
             this.rbDisc = new System.Windows.Forms.RadioButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbDelete = new System.Windows.Forms.RadioButton();
+            this.rbDontDelete = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEncrypt
@@ -129,11 +133,46 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbDontDelete);
+            this.groupBox1.Controls.Add(this.rbDelete);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(474, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(172, 247);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 34);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Delete uncrypted files \r\n    after encryption";
+            // 
+            // rbDelete
+            // 
+            this.rbDelete.AutoSize = true;
+            this.rbDelete.Location = new System.Drawing.Point(30, 107);
+            this.rbDelete.Name = "rbDelete";
+            this.rbDelete.Size = new System.Drawing.Size(50, 21);
+            this.rbDelete.TabIndex = 1;
+            this.rbDelete.TabStop = true;
+            this.rbDelete.Text = "Yes";
+            this.rbDelete.UseVisualStyleBackColor = true;
+            // 
+            // rbDontDelete
+            // 
+            this.rbDontDelete.AutoSize = true;
+            this.rbDontDelete.Location = new System.Drawing.Point(30, 151);
+            this.rbDontDelete.Name = "rbDontDelete";
+            this.rbDontDelete.Size = new System.Drawing.Size(44, 21);
+            this.rbDontDelete.TabIndex = 2;
+            this.rbDontDelete.TabStop = true;
+            this.rbDontDelete.Text = "No";
+            this.rbDontDelete.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -158,6 +197,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +216,9 @@
         private System.Windows.Forms.RadioButton rbDisc;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbDontDelete;
+        private System.Windows.Forms.RadioButton rbDelete;
+        private System.Windows.Forms.Label label2;
     }
 }
 

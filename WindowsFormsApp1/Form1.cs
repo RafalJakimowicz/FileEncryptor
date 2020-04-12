@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             rbFileOrFolder.Checked = true;
+            rbDontDelete.Checked = true;
         }
 
         //  Call this function to remove the key from memory after use for security
@@ -241,7 +242,6 @@ namespace WindowsFormsApp1
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            numLevels.Enabled = false;
             progressBar1.Value = 0;
             try
             {
@@ -259,6 +259,16 @@ namespace WindowsFormsApp1
                     {
                         FileEncrypt(FilePath, Password);
                     }
+
+                    if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                    {
+                        Directory.Delete(FilePath);
+                    }
+                    else if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                    {
+                        File.Delete(FilePath);
+                    }
+
                     progressBar1.Value += 1;
                 }
                 else if (rbDisc.Checked)
@@ -285,7 +295,6 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
-            numLevels.Enabled = true;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -295,7 +304,6 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            numLevels.Enabled = false;
             progressBar1.Value = 0;
             try
             {
@@ -337,7 +345,6 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
-            numLevels.Enabled = true;
         }
 
         private void btnChoose_Click(object sender, EventArgs e)
