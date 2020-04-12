@@ -237,6 +237,7 @@ namespace WindowsFormsApp1
                         item.Extract(output, ExtractExistingFileAction.OverwriteSilently);
                     }
                 }
+                File.Delete(path);
             }
         }
 
@@ -262,7 +263,7 @@ namespace WindowsFormsApp1
 
                     if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
                     {
-                        Directory.Delete(FilePath);
+                        Directory.Delete(FilePath, true);
                     }
                     else if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
                     {
