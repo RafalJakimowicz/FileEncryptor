@@ -94,26 +94,28 @@ namespace WindowsFormsApp1
             //create a buffer (500mb) so only this amount will allocate in the memory and not the whole file
             byte[] buffer = new byte[536870912];
             int read;
-
-            try
+            for (int i = 0; i < levels; i++)
             {
-                while ((read = fsIn.Read(buffer, 0, buffer.Length)) > 0)
+                try
                 {
-                    Application.DoEvents(); // -> for responsive GUI, using Task will be better!
-                    cs.Write(buffer, 0, read);
-                }
+                    while ((read = fsIn.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        Application.DoEvents(); // -> for responsive GUI, using Task will be better!
+                        cs.Write(buffer, 0, read);
+                    }
 
-                // Close up
-                fsIn.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                cs.Close();
-                fsCrypt.Close();
+                    // Close up
+                    fsIn.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+                finally
+                {
+                    cs.Close();
+                    fsCrypt.Close();
+                }
             }
         }
 
@@ -147,22 +149,24 @@ namespace WindowsFormsApp1
             int read;
             //500mb buffer
             byte[] buffer = new byte[536870912];
-
-            try
+            for (int i = 0; i < levels; i++)
             {
-                while ((read = cs.Read(buffer, 0, buffer.Length)) > 0)
+                try
                 {
-                    Application.DoEvents();
-                    fsOut.Write(buffer, 0, read);
+                    while ((read = cs.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        Application.DoEvents();
+                        fsOut.Write(buffer, 0, read);
+                    }
                 }
-            }
-            catch (CryptographicException ex_CryptographicException)
-            {
-                Console.WriteLine("CryptographicException error: " + ex_CryptographicException.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
+                catch (CryptographicException ex_CryptographicException)
+                {
+                    Console.WriteLine("CryptographicException error: " + ex_CryptographicException.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
             }
 
             try
