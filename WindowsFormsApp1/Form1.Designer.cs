@@ -38,6 +38,7 @@
             this.rbDisc = new System.Windows.Forms.RadioButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.numLevels = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numLevels)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,12 +152,22 @@
             0});
             this.numLevels.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(255, 214);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Levels";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 299);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.numLevels);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.rbDisc);
@@ -171,6 +182,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             ((System.ComponentModel.ISupportInitialize)(this.numLevels)).EndInit();
@@ -191,6 +203,7 @@
         private System.Windows.Forms.RadioButton rbDisc;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.NumericUpDown numLevels;
+        private System.Windows.Forms.Label label2;
     }
 }
 

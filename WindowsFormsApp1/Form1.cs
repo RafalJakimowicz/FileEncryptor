@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         List<string> files = new List<string>();
         const string SALT = "*sHa256";
         int levels = 1;
+        const string ZIPPASSWORD = "aEs_EnCrYpToR";
 
         public Form1()
         {
@@ -217,7 +218,8 @@ namespace WindowsFormsApp1
             using (ZipFile zip = new ZipFile())
             {
                 zip.AddDirectory(path, "Files");
-                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Level0;
+                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Level4;
+                zip.Password = ZIPPASSWORD;
                 zip.Save(path + ".zip");
                 return path + ".zip";
             }
@@ -231,6 +233,7 @@ namespace WindowsFormsApp1
                 {
                     string output = path.Substring(0, path.Length - 4);
                     Directory.CreateDirectory(output);
+                    zip.Password = ZIPPASSWORD;
                     foreach (ZipEntry item in zip)
                     {
                         item.Extract(output, ExtractExistingFileAction.OverwriteSilently);
@@ -379,6 +382,11 @@ namespace WindowsFormsApp1
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             levels = (int)numLevels.Value;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
