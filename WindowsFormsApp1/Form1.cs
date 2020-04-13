@@ -255,18 +255,11 @@ namespace WindowsFormsApp1
                         string zipfile = Ziping(FilePath);
                         FileEncrypt(zipfile, Password);
                         File.Delete(zipfile);
+                        Directory.Delete(FilePath, true);
                     }
                     else
                     {
                         FileEncrypt(FilePath, Password);
-                    }
-
-                    if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
-                    {
-                        Directory.Delete(FilePath, true);
-                    }
-                    else if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
-                    {
                         File.Delete(FilePath);
                     }
 
@@ -283,20 +276,22 @@ namespace WindowsFormsApp1
                             string zipfile = Ziping(item);
                             FileEncrypt(zipfile, Password);
                             File.Delete(zipfile);
+                            Directory.Delete(item, true);
                         }
                         else
                         {
                             FileEncrypt(item, Password);
+                            File.Delete(item);
                         }
                         progressBar1.Value += 1;
                     }
                 }
-            }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
+}
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -313,6 +308,12 @@ namespace WindowsFormsApp1
                     progressBar1.Maximum = 1;
                     string output = FilePath.Substring(0, FilePath.Length - 4);
                     FileDecrypt(FilePath, output, Password);
+
+                    if (rbDelete.Checked) 
+                    {
+                        File.Delete(FilePath);
+                    }
+
                     try
                     {
                         Unziping(output);
@@ -370,7 +371,7 @@ namespace WindowsFormsApp1
                     {
                         string[] file = Directory.GetFiles(fbd.SelectedPath);
                         string[] dirs = Directory.GetDirectories(fbd.SelectedPath);
-                        for (int i = 1; i < dirs.Length; i++)
+                        for (int i = 0; i < dirs.Length; i++)
                         {
                             files.Add(dirs[i]);
                         }
