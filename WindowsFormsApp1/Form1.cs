@@ -286,12 +286,12 @@ namespace WindowsFormsApp1
                         progressBar1.Value += 1;
                     }
                 }
-        }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-}
+        }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -307,20 +307,25 @@ namespace WindowsFormsApp1
                 {
                     progressBar1.Maximum = 1;
                     string output = FilePath.Substring(0, FilePath.Length - 4);
-                    FileDecrypt(FilePath, output, Password);
-
-                    if (rbDelete.Checked) 
-                    {
-                        File.Delete(FilePath);
-                    }
-
-                    try
+                    FileDecrypt(FilePath, output, Password);//decrypt files
+                    try// try unzip
                     {
                         Unziping(output);
                     }
                     catch (Exception ex)
                     {
 
+                    }
+
+                    //delete paretnt files
+                    FileAttributes attr = File.GetAttributes(FilePath);
+                    if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                    {
+                        File.Delete(FilePath);
+                    }
+                    else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                    {
+                        Directory.Delete(FilePath, true);
                     }
                     progressBar1.Value += 1;
                 }
@@ -339,6 +344,17 @@ namespace WindowsFormsApp1
                         {
 
                         }
+
+                        FileAttributes attr = File.GetAttributes(item);
+                        if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                        {
+                            File.Delete(item);
+                        }
+                        else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                        {
+                            Directory.Delete(item, true);
+                        }
+
                         progressBar1.Value += 1;
                     }
                 }

@@ -173,9 +173,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 17);
+            this.label2.Size = new System.Drawing.Size(123, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Delete mother files";
+            this.label2.Text = "Delete parent files";
             // 
             // groupBox2
             // 
