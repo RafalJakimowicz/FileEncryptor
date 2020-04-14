@@ -43,6 +43,10 @@
             this.rbDelete = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bwEncrypt = new System.ComponentModel.BackgroundWorker();
+            this.bwDecrypt = new System.ComponentModel.BackgroundWorker();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.lblProgress = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -179,6 +183,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblProgress);
+            this.groupBox2.Controls.Add(this.btnStop);
             this.groupBox2.Controls.Add(this.txbPath);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.btnEncrypt);
@@ -194,6 +200,37 @@
             this.groupBox2.Size = new System.Drawing.Size(558, 308);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
+            // 
+            // bwEncrypt
+            // 
+            this.bwEncrypt.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwEncrypt_DoWork);
+            this.bwEncrypt.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwEncrypt_ProgressChanged);
+            this.bwEncrypt.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwEncrypt_RunWorkerCompleted);
+            // 
+            // bwDecrypt
+            // 
+            this.bwDecrypt.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDecrypt_DoWork);
+            this.bwDecrypt.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwDecrypt_ProgressChanged);
+            this.bwDecrypt.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwDecrypt_RunWorkerCompleted);
+            // 
+            // btnStop
+            // 
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Location = new System.Drawing.Point(164, 232);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(63, 23);
+            this.btnStop.TabIndex = 10;
+            this.btnStop.Text = "STOP";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // lblProgress
+            // 
+            this.lblProgress.AutoSize = true;
+            this.lblProgress.Location = new System.Drawing.Point(176, 272);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(0, 13);
+            this.lblProgress.TabIndex = 11;
             // 
             // Form1
             // 
@@ -234,6 +271,10 @@
         private System.Windows.Forms.RadioButton rbDelete;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.ComponentModel.BackgroundWorker bwEncrypt;
+        private System.ComponentModel.BackgroundWorker bwDecrypt;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Label lblProgress;
     }
 }
 

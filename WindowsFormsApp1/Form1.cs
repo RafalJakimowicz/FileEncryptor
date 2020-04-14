@@ -25,8 +25,24 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+
+            #region BW SETTINGS
+            bwDecrypt.DoWork += bwDecrypt_DoWork;
+            bwDecrypt.ProgressChanged += bwDecrypt_ProgressChanged;
+            bwDecrypt.RunWorkerCompleted += bwDecrypt_RunWorkerCompleted;
+            bwDecrypt.WorkerReportsProgress = true;
+            bwDecrypt.WorkerSupportsCancellation = true;
+            
+            bwEncrypt.DoWork += bwEncrypt_DoWork;
+            bwEncrypt.ProgressChanged += bwEncrypt_ProgressChanged;
+            bwEncrypt.RunWorkerCompleted += bwEncrypt_RunWorkerCompleted;
+            bwEncrypt.WorkerReportsProgress = true;
+            bwEncrypt.WorkerSupportsCancellation = true;
+            #endregion
+
             rbFileOrFolder.Checked = true;
             rbDontDelete.Checked = true;
+            btnStop.Enabled = false;
         }
 
         //  Call this function to remove the key from memory after use for security
@@ -67,7 +83,7 @@ namespace WindowsFormsApp1
             FileStream fsCrypt = new FileStream(inputFile + ".mvp", FileMode.Create);
 
             //convert password string to byte arrray
-            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(GenaratePassword(password));
+            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(GeneratePassword(password));
 
             //Set Rijndael symmetric encryption algorithm
             RijndaelManaged AES = new RijndaelManaged
@@ -125,7 +141,7 @@ namespace WindowsFormsApp1
         /// <param name="password"></param>
         private void FileDecrypt(string inputFile, string outputFile, string password)
         {
-            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(GenaratePassword(password));
+            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(GeneratePassword(password));
             byte[] salt = new byte[32];
 
             FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
@@ -182,7 +198,12 @@ namespace WindowsFormsApp1
             }
         }
 
-        private string GenaratePassword(string raw)
+        /// <summary>
+        /// hashing password with salt
+        /// </summary>
+        /// <param name="raw"></param>
+        /// <returns>password hash</returns>
+        private string GeneratePassword(string raw)
         {
             using (SHA512 sha = SHA512.Create())
             {
@@ -256,54 +277,9 @@ namespace WindowsFormsApp1
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            progressBar1.Value = 0;
-            try
-            {
-                if (rbFileOrFolder.Checked)
-                {
-                    progressBar1.Maximum = 1;
-                    FileAttributes attr = File.GetAttributes(FilePath);
-                    if (attr.HasFlag(FileAttributes.Directory))
-                    {
-                        string zipfile = Ziping(FilePath);
-                        FileEncrypt(zipfile, Password);
-                        File.Delete(zipfile);
-                        Directory.Delete(FilePath, true);
-                    }
-                    else
-                    {
-                        FileEncrypt(FilePath, Password);
-                        File.Delete(FilePath);
-                    }
-
-                    progressBar1.Value += 1;
-                }
-                else if (rbDisc.Checked)
-                {
-                    progressBar1.Maximum = files.Count;
-                    foreach (var item in files)
-                    {
-                        FileAttributes attr = File.GetAttributes(item);
-                        if (attr.HasFlag(FileAttributes.Directory))
-                        {
-                            string zipfile = Ziping(item);
-                            FileEncrypt(zipfile, Password);
-                            File.Delete(zipfile);
-                            Directory.Delete(item, true);
-                        }
-                        else
-                        {
-                            FileEncrypt(item, Password);
-                            File.Delete(item);
-                        }
-                        progressBar1.Value += 1;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            lblProgress.Text = "Working...";
+            btnStop.Enabled = true;
+            bwEncrypt.RunWorkerAsync();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -313,69 +289,9 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            progressBar1.Value = 0;
-            try
-            {
-                if (rbFileOrFolder.Checked)
-                {
-                    progressBar1.Maximum = 1;
-                    string output = FilePath.Substring(0, FilePath.Length - 4);
-                    FileDecrypt(FilePath, output, Password);//decrypt files
-                    try// try unzip
-                    {
-                        Unziping(output);
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-
-                    //delete paretnt files
-                    FileAttributes attr = File.GetAttributes(FilePath);
-                    if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
-                    {
-                        File.Delete(FilePath);
-                    }
-                    else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
-                    {
-                        Directory.Delete(FilePath, true);
-                    }
-                    progressBar1.Value += 1;
-                }
-                else if (rbDisc.Checked)
-                {
-                    progressBar1.Maximum = files.Count;
-                    foreach (var item in files)
-                    {
-                        string output = item.Substring(0, item.Length - 4);
-                        FileDecrypt(item, output, Password);
-                        try
-                        {
-                            Unziping(output);
-                        }
-                        catch (Exception ex)
-                        {
-
-                        }
-
-                        FileAttributes attr = File.GetAttributes(item);
-                        if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
-                        {
-                            File.Delete(item);
-                        }
-                        else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
-                        {
-                            Directory.Delete(item, true);
-                        }
-
-                        progressBar1.Value += 1;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            lblProgress.Text = "Working...";
+            btnStop.Enabled = true;
+            bwDecrypt.RunWorkerAsync();
         }
 
         private void btnChoose_Click(object sender, EventArgs e)
@@ -389,6 +305,7 @@ namespace WindowsFormsApp1
                         FilePath = opf.FileName;
                     }
                 }
+                progressBar1.Maximum = 1;
             }
             else if (rbDisc.Checked)
             {
@@ -411,12 +328,199 @@ namespace WindowsFormsApp1
                         txbPath.Text = fbd.SelectedPath;
                     }
                 }
+                progressBar1.Maximum = files.Count;
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bwDecrypt_DoWork(object sender, DoWorkEventArgs e)
+        {
+            bwDecrypt.ReportProgress(0);
+            try
+            {
+                int x = 0;
+                if (rbFileOrFolder.Checked)
+                {
+                    string output = FilePath.Substring(0, FilePath.Length - 4);
+                    FileDecrypt(FilePath, output, Password);//decrypt files
+                    try// try unzip
+                    {
+                        Unziping(output);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                    //delete paretnt files
+                    FileAttributes attr = File.GetAttributes(FilePath);
+                    if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                    {
+                        File.Delete(FilePath);
+                    }
+                    else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                    {
+                        Directory.Delete(FilePath, true);
+                    }
+                    bwDecrypt.ReportProgress(1);
+                }
+                else if (rbDisc.Checked)
+                {
+                    foreach (var item in files)
+                    {
+                        string output = item.Substring(0, item.Length - 4);
+                        FileDecrypt(item, output, Password);
+                        try
+                        {
+                            Unziping(output);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                        FileAttributes attr = File.GetAttributes(item);
+                        if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                        {
+                            File.Delete(item);
+                        }
+                        else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                        {
+                            Directory.Delete(item, true);
+                        }
+                        x++;
+                        bwDecrypt.ReportProgress(x);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bwDecrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+            if(progressBar1.Value == progressBar1.Maximum)
+            {
+                bwDecrypt.CancelAsync();
+            }
+        }
+
+        private void bwDecrypt_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                lblProgress.Text = "Canceled";
+            }
+            else if (e.Error != null)
+            {
+                lblProgress.Text = "Error";
+            }
+            else
+            {
+                lblProgress.Text = "Completed";
+            }
+        }
+
+        private void bwEncrypt_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int x = 0;
+            bwEncrypt.ReportProgress(0);
+            try
+            {
+                if (rbFileOrFolder.Checked)
+                {
+                    
+                    FileAttributes attr = File.GetAttributes(FilePath);
+                    if (attr.HasFlag(FileAttributes.Directory))
+                    {
+                        string zipfile = Ziping(FilePath);
+                        FileEncrypt(zipfile, Password);
+                        File.Delete(zipfile);
+                        Directory.Delete(FilePath, true);
+                    }
+                    else
+                    {
+                        FileEncrypt(FilePath, Password);
+                        File.Delete(FilePath);
+                    }
+
+                    bwEncrypt.ReportProgress(1);
+                }
+                else if (rbDisc.Checked)
+                {
+                    
+                    foreach (var item in files)
+                    {
+                        FileAttributes attr = File.GetAttributes(item);
+                        if (attr.HasFlag(FileAttributes.Directory))
+                        {
+                            string zipfile = Ziping(item);
+                            FileEncrypt(zipfile, Password);
+                            File.Delete(zipfile);
+                            Directory.Delete(item, true);
+                        }
+                        else
+                        {
+                            FileEncrypt(item, Password);
+                            File.Delete(item);
+                        }
+                        x++;
+                        bwEncrypt.ReportProgress(x);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bwEncrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+            if (progressBar1.Value == progressBar1.Maximum)
+            {
+                bwEncrypt.CancelAsync();
+            }
+        }
+
+        private void bwEncrypt_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                lblProgress.Text = "Canceled";
+            }
+            else if (e.Error != null)
+            {
+                lblProgress.Text = "Error";
+            }
+            else
+            {
+                lblProgress.Text = "Completed";
+            }
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (bwDecrypt.IsBusy)
+            {
+                bwDecrypt.CancelAsync();
+                btnStop.Enabled = false;
+                progressBar1.Value = progressBar1.Maximum;
+            }
+            if (bwEncrypt.IsBusy)
+            {
+                bwEncrypt.CancelAsync();
+                btnStop.Enabled = false;
+                progressBar1.Value = progressBar1.Maximum;
+            }
         }
     }
 }
