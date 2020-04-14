@@ -15,7 +15,6 @@ C:\Users\Ja\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsForm
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DotNetZip.dll
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DotNetZip.pdb
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DotNetZip.xml
-D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
