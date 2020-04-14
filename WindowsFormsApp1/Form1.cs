@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         List<string> files = new List<string>();
         const string SALT = "*sHa256";
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
+
         public Form1()
         {
             InitializeComponent();
@@ -568,7 +569,7 @@ namespace WindowsFormsApp1
             btnStop.Enabled = true;
             txbPass.Enabled = false;
         }
-        
+
         /// <summary>
         /// get all items enable to true
         /// </summary>
