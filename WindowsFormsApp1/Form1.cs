@@ -22,6 +22,9 @@ namespace WindowsFormsApp1
         List<string> files = new List<string>();
         const string SALT = "*sHa256";
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
+        string working = "Work in progress...";
+        string canceled = "Process canceled";
+        string completed = "Process completed";
 
         public Form1()
         {
@@ -279,7 +282,7 @@ namespace WindowsFormsApp1
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
             AllEnableFalse();
-            lblProgress.Text = "Work in progress...";
+            lblProgress.Text = working;
             bwEncrypt.RunWorkerAsync();
         }
 
@@ -291,7 +294,7 @@ namespace WindowsFormsApp1
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
             AllEnableFalse();
-            lblProgress.Text = "Work in progress...";
+            lblProgress.Text = working;
             bwDecrypt.RunWorkerAsync();
         }
 
@@ -423,7 +426,7 @@ namespace WindowsFormsApp1
         {
             if (e.Cancelled)
             {
-                lblProgress.Text = "Progress canceled";
+                lblProgress.Text = canceled;
             }
             else if (e.Error != null)
             {
@@ -431,7 +434,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                lblProgress.Text = "Progress completed";
+                lblProgress.Text = completed;
             }
             AllEnableTrue();
         }
@@ -525,7 +528,7 @@ namespace WindowsFormsApp1
         {
             if (e.Cancelled)
             {
-                lblProgress.Text = "Process canceled";
+                lblProgress.Text = canceled;
             }
             else if (e.Error != null)
             {
@@ -533,7 +536,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                lblProgress.Text = "Proces completed";
+                lblProgress.Text = completed;
             }
             AllEnableTrue();
         }
