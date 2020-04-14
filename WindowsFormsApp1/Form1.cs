@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,10 @@ namespace WindowsFormsApp1
         List<string> files = new List<string>();
         const string SALT = "*sHa256";
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
-
+        #region RSA KEYS
+        string publicKey = "<RSAKeyValue><Modulus>pmC1oXJx9ZhyTavVZSStdfVorcQjE2OHVO8Lgb3A4jq5/LiRmvNS0iatkpBaTIPML+XX2Wr5lOleIZ1B3bOQ0FgVFwYvANnZFlq9EkxfGYhO3mlFtHs9T7GtqrLmIXLwBXhco2LelcTYvibbco7p784g0DP2gN5HDCh5IuBM2t0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+        string privateKey = "<RSAKeyValue><Modulus>pmC1oXJx9ZhyTavVZSStdfVorcQjE2OHVO8Lgb3A4jq5/LiRmvNS0iatkpBaTIPML+XX2Wr5lOleIZ1B3bOQ0FgVFwYvANnZFlq9EkxfGYhO3mlFtHs9T7GtqrLmIXLwBXhco2LelcTYvibbco7p784g0DP2gN5HDCh5IuBM2t0=</Modulus><Exponent>AQAB</Exponent><P>1tEZpa4meHDtMX6aoueoXsIgq5sEd3Qg2jBa30etN0RRT5gvxRn0Hs2RQahzoClfeBskWkeErbzc7u2Z+XhjUw==</P><Q>xkZKn4IXVaWsYsJ0g7f26JoI91bgfpyZelQmii4RYxbxwVMquQK60e2/40anWYVKsB89js3dTTENWTzL6oSzDw==</Q><DP>V6KWQ/D34Mqw+TAdBbhcB8xKZ7el6tWFUX3IlK45DALi6QW89zvPS4GxcIe4I+6889Ke0fW7OuWBfDeSSSPD4Q==</DP><DQ>VhflhTduvHDQ1p1LDHrQCpX/+K5PkoqbFgP+LBfu0tD+roxXS7iEuGz82koulm+LS8h06VI4mrEG882zWaS/Pw==</DQ><InverseQ>PGXmjVCrsBbhoN9yTIvy8jjNJo2k8cQGwdrkyhEjVnfybEjJkzYy3Rnu/wsmZ4ggK4LpJdtqYHWw7GyPFzXNwA==</InverseQ><D>k8wRTUwHI+66i3j75g+A7+qDhOlZZ13g2HhJtoVEFTOqCHBFGGrSxdCKHEqTjKj/+ASrjH5VHA17C01RN4rONncx61s6dTW7HXCMtZcQ059ie2g7B3v8MOtDJ2QPrB9NdqzBm8lq3ozLXwx4UQ1GTAal/pASD4hSo59JEuToT1k=</D></RSAKeyValue>";
+        #endregion
         public Form1()
         {
             InitializeComponent();
@@ -60,6 +64,12 @@ namespace WindowsFormsApp1
         /// <param name="password"></param>
         private void FileEncrypt(string inputFile, string password)
         {
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+            {
+                rsa.KeySize = 1024;
+                
+            }
+
 
             //generate random salt
             byte[] salt = GenerateRandomSalt();
@@ -71,10 +81,12 @@ namespace WindowsFormsApp1
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(GenaratePassword(password));
 
             //Set Rijndael symmetric encryption algorithm
-            RijndaelManaged AES = new RijndaelManaged();
-            AES.KeySize = 256;
-            AES.BlockSize = 128;
-            AES.Padding = PaddingMode.PKCS7;
+            RijndaelManaged AES = new RijndaelManaged
+            {
+                KeySize = 256,
+                BlockSize = 128,
+                Padding = PaddingMode.PKCS7
+            };
 
 
             var key = new Rfc2898DeriveBytes(passwordBytes, salt, 50000);
@@ -130,14 +142,17 @@ namespace WindowsFormsApp1
             FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
             fsCrypt.Read(salt, 0, salt.Length);
 
-            RijndaelManaged AES = new RijndaelManaged();
-            AES.KeySize = 256;
-            AES.BlockSize = 128;
+            RijndaelManaged AES = new RijndaelManaged
+            {
+                KeySize = 256,
+                BlockSize = 128,
+                Padding = PaddingMode.PKCS7,
+                Mode = CipherMode.CFB
+            };
             var key = new Rfc2898DeriveBytes(passwordBytes, salt, 50000);
             AES.Key = key.GetBytes(AES.KeySize / 8);
             AES.IV = key.GetBytes(AES.BlockSize / 8);
-            AES.Padding = PaddingMode.PKCS7;
-            AES.Mode = CipherMode.CFB;
+            
 
             CryptoStream cs = new CryptoStream(fsCrypt, AES.CreateDecryptor(), CryptoStreamMode.Read);
 
