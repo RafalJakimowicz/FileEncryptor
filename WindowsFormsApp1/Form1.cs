@@ -215,18 +215,27 @@ namespace WindowsFormsApp1
             txbPath.Text = FilePath;
         }
 
+        /// <summary>
+        /// compress directories to zip file 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>path to zip file</returns>
         private string Ziping(string path)
         {
             using (ZipFile zip = new ZipFile())
             {
                 zip.AddDirectory(path, "Files");
-                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Level4;
+                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Level6;
                 zip.Password = ZIPPASSWORD;
                 zip.Save(path + ".zip");
                 return path + ".zip";
             }
         }
 
+        /// <summary>
+        /// unzip zip file to directory and delete it
+        /// </summary>
+        /// <param name="path"></param>
         private void Unziping(string path)
         {
             if (new FileInfo(path).Extension == ".zip")
@@ -238,7 +247,7 @@ namespace WindowsFormsApp1
                     zip.Password = ZIPPASSWORD;
                     foreach (ZipEntry item in zip)
                     {
-                        item.Extract(output, ExtractExistingFileAction.OverwriteSilently);
+                        item.Extract(output, ExtractExistingFileAction.InvokeExtractProgressEvent);
                     }
                 }
                 File.Delete(path);
