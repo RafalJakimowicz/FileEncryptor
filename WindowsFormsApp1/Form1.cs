@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             bwDecrypt.RunWorkerCompleted += bwDecrypt_RunWorkerCompleted;
             bwDecrypt.WorkerReportsProgress = true;
             bwDecrypt.WorkerSupportsCancellation = true;
-            
+
             bwEncrypt.DoWork += bwEncrypt_DoWork;
             bwEncrypt.ProgressChanged += bwEncrypt_ProgressChanged;
             bwEncrypt.RunWorkerCompleted += bwEncrypt_RunWorkerCompleted;
@@ -157,7 +157,7 @@ namespace WindowsFormsApp1
             var key = new Rfc2898DeriveBytes(passwordBytes, salt, 50000);
             AES.Key = key.GetBytes(AES.KeySize / 8);
             AES.IV = key.GetBytes(AES.BlockSize / 8);
-            
+
 
             CryptoStream cs = new CryptoStream(fsCrypt, AES.CreateDecryptor(), CryptoStreamMode.Read);
 
@@ -277,6 +277,8 @@ namespace WindowsFormsApp1
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            btnEncrypt.Enabled = false;
+            btnDecrypt.Enabled = false;
             lblProgress.Text = "Work in progress...";
             btnStop.Enabled = true;
             bwEncrypt.RunWorkerAsync();
@@ -289,6 +291,8 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
+            btnEncrypt.Enabled = false;
+            btnDecrypt.Enabled = false;
             lblProgress.Text = "Work in progress...";
             btnStop.Enabled = true;
             bwDecrypt.RunWorkerAsync();
@@ -412,7 +416,7 @@ namespace WindowsFormsApp1
         private void bwDecrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            if(progressBar1.Value == progressBar1.Maximum)
+            if (progressBar1.Value == progressBar1.Maximum)
             {
                 bwDecrypt.CancelAsync();
             }
@@ -432,6 +436,8 @@ namespace WindowsFormsApp1
             {
                 lblProgress.Text = "Progress completed";
             }
+            btnDecrypt.Enabled = true;
+            btnEncrypt.Enabled = true;
         }
 
         private void bwEncrypt_DoWork(object sender, DoWorkEventArgs e)
@@ -442,7 +448,7 @@ namespace WindowsFormsApp1
             {
                 if (rbFileOrFolder.Checked)
                 {
-                    
+
                     FileAttributes attr = File.GetAttributes(FilePath);
                     if (attr.HasFlag(FileAttributes.Directory))
                     {
@@ -461,7 +467,7 @@ namespace WindowsFormsApp1
                 }
                 else if (rbDisc.Checked)
                 {
-                    
+
                     foreach (var item in files)
                     {
                         if (this.bwEncrypt.CancellationPending)
@@ -517,6 +523,8 @@ namespace WindowsFormsApp1
             {
                 lblProgress.Text = "Proces completed";
             }
+            btnDecrypt.Enabled = true;
+            btnEncrypt.Enabled = true;
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -533,6 +541,8 @@ namespace WindowsFormsApp1
                 btnStop.Enabled = false;
                 progressBar1.Value = progressBar1.Maximum;
             }
+            btnDecrypt.Enabled = true;
+            btnEncrypt.Enabled = true;
         }
     }
 }
