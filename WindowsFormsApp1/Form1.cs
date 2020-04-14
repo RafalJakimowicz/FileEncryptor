@@ -455,12 +455,20 @@ namespace WindowsFormsApp1
                         string zipfile = Ziping(FilePath);
                         FileEncrypt(zipfile, Password);
                         File.Delete(zipfile);
-                        Directory.Delete(FilePath, true);
                     }
                     else
                     {
                         FileEncrypt(FilePath, Password);
+                    }
+
+                    //delete paretnt files
+                    if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                    {
                         File.Delete(FilePath);
+                    }
+                    else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                    {
+                        Directory.Delete(FilePath, true);
                     }
 
                     bwEncrypt.ReportProgress(1);
@@ -482,13 +490,21 @@ namespace WindowsFormsApp1
                             string zipfile = Ziping(item);
                             FileEncrypt(zipfile, Password);
                             File.Delete(zipfile);
-                            Directory.Delete(item, true);
                         }
                         else
                         {
                             FileEncrypt(item, Password);
+                        }
+
+                        if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                        {
                             File.Delete(item);
                         }
+                        else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                        {
+                            Directory.Delete(item, true);
+                        }
+
                         x++;
                         bwEncrypt.ReportProgress(x);
                     }
