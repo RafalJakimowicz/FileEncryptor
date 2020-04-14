@@ -553,6 +553,9 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// get all items enable to false
+        /// </summary>
         private void AllEnableFalse()
         {
             rbDelete.Enabled = false;
@@ -566,6 +569,9 @@ namespace WindowsFormsApp1
             txbPass.Enabled = false;
         }
         
+        /// <summary>
+        /// get all items enable to true
+        /// </summary>
         private void AllEnableTrue()
         {
             rbDelete.Enabled = true;
