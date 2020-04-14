@@ -49,6 +49,7 @@ namespace WindowsFormsApp1
             btnStop.Enabled = false;
         }
 
+        #region Crypting
         //  Call this function to remove the key from memory after use for security
         [DllImport("KERNEL32.DLL", EntryPoint = "RtlZeroMemory")]
         public static extern bool ZeroMemory(IntPtr Destination, int Length);
@@ -222,24 +223,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Form1_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
-        }
-
-        private void Form1_DragDrop(object sender, DragEventArgs e)
-        {
-            FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
-            txbPath.Text = FilePath;
-        }
-
         /// <summary>
         /// compress directories to zip file 
         /// </summary>
@@ -277,6 +260,26 @@ namespace WindowsFormsApp1
                 }
                 File.Delete(path);
             }
+        }
+        #endregion
+
+        #region Controls
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
+            txbPath.Text = FilePath;
         }
 
         private void btnEncrypt_Click(object sender, EventArgs e)
@@ -341,6 +344,24 @@ namespace WindowsFormsApp1
 
         }
 
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (bwDecrypt.IsBusy)
+            {
+                bwDecrypt.CancelAsync();
+                AllEnableTrue();
+                progressBar1.Value = progressBar1.Maximum;
+            }
+            if (bwEncrypt.IsBusy)
+            {
+                bwEncrypt.CancelAsync();
+                AllEnableTrue();
+                progressBar1.Value = progressBar1.Maximum;
+            }
+        }
+        #endregion
+
+        #region Background workers
         private void bwDecrypt_DoWork(object sender, DoWorkEventArgs e)
         {
             bwDecrypt.ReportProgress(0);
@@ -540,23 +561,9 @@ namespace WindowsFormsApp1
             }
             AllEnableTrue();
         }
+        #endregion
 
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            if (bwDecrypt.IsBusy)
-            {
-                bwDecrypt.CancelAsync();
-                AllEnableTrue();
-                progressBar1.Value = progressBar1.Maximum;
-            }
-            if (bwEncrypt.IsBusy)
-            {
-                bwEncrypt.CancelAsync();
-                AllEnableTrue();
-                progressBar1.Value = progressBar1.Maximum;
-            }
-        }
-
+        #region UI
         /// <summary>
         /// get all items enable to false
         /// </summary>
@@ -588,5 +595,6 @@ namespace WindowsFormsApp1
             btnStop.Enabled = false;
             txbPass.Enabled = true;
         }
+        #endregion
     }
 }
