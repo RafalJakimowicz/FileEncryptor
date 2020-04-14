@@ -277,7 +277,7 @@ namespace WindowsFormsApp1
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            lblProgress.Text = "Working...";
+            lblProgress.Text = "Work in progress...";
             btnStop.Enabled = true;
             bwEncrypt.RunWorkerAsync();
         }
@@ -289,7 +289,7 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            lblProgress.Text = "Working...";
+            lblProgress.Text = "Work in progress...";
             btnStop.Enabled = true;
             bwDecrypt.RunWorkerAsync();
         }
@@ -422,7 +422,7 @@ namespace WindowsFormsApp1
         {
             if (e.Cancelled)
             {
-                lblProgress.Text = "Canceled";
+                lblProgress.Text = "Progress canceled";
             }
             else if (e.Error != null)
             {
@@ -430,7 +430,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                lblProgress.Text = "Completed";
+                lblProgress.Text = "Progress completed";
             }
         }
 
@@ -507,7 +507,7 @@ namespace WindowsFormsApp1
         {
             if (e.Cancelled)
             {
-                lblProgress.Text = "Canceled";
+                lblProgress.Text = "Process canceled";
             }
             else if (e.Error != null)
             {
@@ -515,7 +515,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                lblProgress.Text = "Completed";
+                lblProgress.Text = "Proces completed";
             }
         }
 
