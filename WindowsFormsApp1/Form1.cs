@@ -634,6 +634,10 @@ namespace WindowsFormsApp1
             rbDelete.Text = langTable[10];
             rbDontDelete.Text = langTable[11];
             this.Text = langTable[12];
+            tscbLang.Items.Clear();
+            tscbLang.Items.Add(langTable[13]);
+            tscbLang.Items.Add(langTable[14]);
+            tscbLang.Text = langTable[15];
         }
         #endregion
     }

@@ -15,18 +15,18 @@ namespace Encryptor
         public string[] TranslateToTable(Langs lang)
         {
             string pathToFile = pathToFolder;
-            if(lang == Langs.lang_eng)
+            if (lang == Langs.lang_eng)
             {
                 pathToFile += "\\lang_eng.lang";
             }
-            else if(lang == Langs.lang_pol)
+            else if (lang == Langs.lang_pol)
             {
                 pathToFile += "\\lang_pol.lang";
             }
-            string[] table = new string[13];
-            using(StreamReader sr = new StreamReader(pathToFile))
+            string[] table = new string[16];
+            using (StreamReader sr = new StreamReader(pathToFile))
             {
-                for (int i = 0; i < 13; i++)
+                for (int i = 0; i < 16; i++)
                 {
                     table[i] = sr.ReadLine();
                 }
