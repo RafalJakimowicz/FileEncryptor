@@ -277,10 +277,8 @@ namespace WindowsFormsApp1
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            btnEncrypt.Enabled = false;
-            btnDecrypt.Enabled = false;
+            AllEnableFalse();
             lblProgress.Text = "Work in progress...";
-            btnStop.Enabled = true;
             bwEncrypt.RunWorkerAsync();
         }
 
@@ -291,10 +289,8 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            btnEncrypt.Enabled = false;
-            btnDecrypt.Enabled = false;
+            AllEnableFalse();
             lblProgress.Text = "Work in progress...";
-            btnStop.Enabled = true;
             bwDecrypt.RunWorkerAsync();
         }
 
@@ -436,8 +432,7 @@ namespace WindowsFormsApp1
             {
                 lblProgress.Text = "Progress completed";
             }
-            btnDecrypt.Enabled = true;
-            btnEncrypt.Enabled = true;
+            AllEnableTrue();
         }
 
         private void bwEncrypt_DoWork(object sender, DoWorkEventArgs e)
@@ -539,8 +534,7 @@ namespace WindowsFormsApp1
             {
                 lblProgress.Text = "Proces completed";
             }
-            btnDecrypt.Enabled = true;
-            btnEncrypt.Enabled = true;
+            AllEnableTrue();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -548,17 +542,41 @@ namespace WindowsFormsApp1
             if (bwDecrypt.IsBusy)
             {
                 bwDecrypt.CancelAsync();
-                btnStop.Enabled = false;
+                AllEnableTrue();
                 progressBar1.Value = progressBar1.Maximum;
             }
             if (bwEncrypt.IsBusy)
             {
                 bwEncrypt.CancelAsync();
-                btnStop.Enabled = false;
+                AllEnableTrue();
                 progressBar1.Value = progressBar1.Maximum;
             }
+        }
+
+        private void AllEnableFalse()
+        {
+            rbDelete.Enabled = false;
+            rbDisc.Enabled = false;
+            rbDontDelete.Enabled = false;
+            rbFileOrFolder.Enabled = false;
+            btnChoose.Enabled = false;
+            btnDecrypt.Enabled = false;
+            btnEncrypt.Enabled = false;
+            btnStop.Enabled = true;
+            txbPass.Enabled = false;
+        }
+        
+        private void AllEnableTrue()
+        {
+            rbDelete.Enabled = true;
+            rbDisc.Enabled = true;
+            rbDontDelete.Enabled = true;
+            rbFileOrFolder.Enabled = true;
+            btnChoose.Enabled = true;
             btnDecrypt.Enabled = true;
             btnEncrypt.Enabled = true;
+            btnStop.Enabled = false;
+            txbPass.Enabled = true;
         }
     }
 }
