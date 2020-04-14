@@ -372,6 +372,12 @@ namespace WindowsFormsApp1
                 {
                     foreach (var item in files)
                     {
+                        if (this.bwDecrypt.CancellationPending)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+
                         string output = item.Substring(0, item.Length - 4);
                         FileDecrypt(item, output, Password);
                         try
@@ -458,6 +464,12 @@ namespace WindowsFormsApp1
                     
                     foreach (var item in files)
                     {
+                        if (this.bwEncrypt.CancellationPending)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+
                         FileAttributes attr = File.GetAttributes(item);
                         if (attr.HasFlag(FileAttributes.Directory))
                         {

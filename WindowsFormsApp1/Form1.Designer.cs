@@ -54,9 +54,9 @@
             // btnEncrypt
             // 
             this.btnEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnEncrypt.Location = new System.Drawing.Point(262, 261);
+            this.btnEncrypt.Location = new System.Drawing.Point(426, 323);
             this.btnEncrypt.Name = "btnEncrypt";
-            this.btnEncrypt.Size = new System.Drawing.Size(121, 41);
+            this.btnEncrypt.Size = new System.Drawing.Size(126, 57);
             this.btnEncrypt.TabIndex = 0;
             this.btnEncrypt.Text = "Encrypt";
             this.btnEncrypt.UseVisualStyleBackColor = true;
@@ -65,9 +65,9 @@
             // btnDecrypt
             // 
             this.btnDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnDecrypt.Location = new System.Drawing.Point(6, 261);
+            this.btnDecrypt.Location = new System.Drawing.Point(6, 323);
             this.btnDecrypt.Name = "btnDecrypt";
-            this.btnDecrypt.Size = new System.Drawing.Size(119, 41);
+            this.btnDecrypt.Size = new System.Drawing.Size(125, 57);
             this.btnDecrypt.TabIndex = 1;
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.UseVisualStyleBackColor = true;
@@ -76,14 +76,14 @@
             // txbPath
             // 
             this.txbPath.Enabled = false;
-            this.txbPath.Location = new System.Drawing.Point(6, 19);
+            this.txbPath.Location = new System.Drawing.Point(9, 75);
             this.txbPath.Name = "txbPath";
             this.txbPath.Size = new System.Drawing.Size(488, 20);
             this.txbPath.TabIndex = 2;
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(509, 17);
+            this.btnChoose.Location = new System.Drawing.Point(512, 73);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(40, 23);
             this.btnChoose.TabIndex = 3;
@@ -93,7 +93,7 @@
             // 
             // txbPass
             // 
-            this.txbPass.Location = new System.Drawing.Point(121, 187);
+            this.txbPass.Location = new System.Drawing.Point(121, 249);
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(222, 20);
             this.txbPass.TabIndex = 4;
@@ -103,7 +103,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(37, 187);
+            this.label1.Location = new System.Drawing.Point(37, 249);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 20);
             this.label1.TabIndex = 5;
@@ -112,7 +112,7 @@
             // rbFileOrFolder
             // 
             this.rbFileOrFolder.AutoSize = true;
-            this.rbFileOrFolder.Location = new System.Drawing.Point(90, 92);
+            this.rbFileOrFolder.Location = new System.Drawing.Point(90, 169);
             this.rbFileOrFolder.Name = "rbFileOrFolder";
             this.rbFileOrFolder.Size = new System.Drawing.Size(41, 17);
             this.rbFileOrFolder.TabIndex = 6;
@@ -123,7 +123,7 @@
             // rbDisc
             // 
             this.rbDisc.AutoSize = true;
-            this.rbDisc.Location = new System.Drawing.Point(222, 92);
+            this.rbDisc.Location = new System.Drawing.Point(222, 169);
             this.rbDisc.Name = "rbDisc";
             this.rbDisc.Size = new System.Drawing.Size(90, 17);
             this.rbDisc.TabIndex = 7;
@@ -133,9 +133,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(131, 261);
+            this.progressBar1.Location = new System.Drawing.Point(137, 356);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(125, 41);
+            this.progressBar1.Size = new System.Drawing.Size(283, 24);
             this.progressBar1.TabIndex = 8;
             // 
             // groupBox1
@@ -144,16 +144,16 @@
             this.groupBox1.Controls.Add(this.rbDelete);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(389, 46);
+            this.groupBox1.Location = new System.Drawing.Point(392, 123);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(160, 256);
+            this.groupBox1.Size = new System.Drawing.Size(160, 173);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
             // rbDontDelete
             // 
             this.rbDontDelete.AutoSize = true;
-            this.rbDontDelete.Location = new System.Drawing.Point(55, 140);
+            this.rbDontDelete.Location = new System.Drawing.Point(56, 125);
             this.rbDontDelete.Name = "rbDontDelete";
             this.rbDontDelete.Size = new System.Drawing.Size(44, 21);
             this.rbDontDelete.TabIndex = 2;
@@ -164,7 +164,7 @@
             // rbDelete
             // 
             this.rbDelete.AutoSize = true;
-            this.rbDelete.Location = new System.Drawing.Point(55, 97);
+            this.rbDelete.Location = new System.Drawing.Point(56, 82);
             this.rbDelete.Name = "rbDelete";
             this.rbDelete.Size = new System.Drawing.Size(50, 21);
             this.rbDelete.TabIndex = 1;
@@ -175,7 +175,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 46);
+            this.label2.Location = new System.Drawing.Point(19, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 17);
             this.label2.TabIndex = 0;
@@ -197,7 +197,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(558, 308);
+            this.groupBox2.Size = new System.Drawing.Size(558, 386);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
@@ -216,9 +216,9 @@
             // btnStop
             // 
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStop.Location = new System.Drawing.Point(164, 232);
+            this.btnStop.Location = new System.Drawing.Point(236, 323);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(63, 23);
+            this.btnStop.Size = new System.Drawing.Size(76, 23);
             this.btnStop.TabIndex = 10;
             this.btnStop.Text = "STOP";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -227,17 +227,19 @@
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(176, 272);
+            this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblProgress.Location = new System.Drawing.Point(194, 27);
             this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(0, 13);
+            this.lblProgress.Size = new System.Drawing.Size(149, 20);
             this.lblProgress.TabIndex = 11;
+            this.lblProgress.Text = "Dont work right now";
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 331);
+            this.ClientSize = new System.Drawing.Size(581, 413);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
