@@ -34,29 +34,32 @@
             this.txbPath = new System.Windows.Forms.TextBox();
             this.btnChoose = new System.Windows.Forms.Button();
             this.txbPass = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.rbFileOrFolder = new System.Windows.Forms.RadioButton();
             this.rbDisc = new System.Windows.Forms.RadioButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbDontDelete = new System.Windows.Forms.RadioButton();
             this.rbDelete = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblParent = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblProgress = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.bwEncrypt = new System.ComponentModel.BackgroundWorker();
             this.bwDecrypt = new System.ComponentModel.BackgroundWorker();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tscbLang = new System.Windows.Forms.ToolStripComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEncrypt
             // 
             this.btnEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnEncrypt.Location = new System.Drawing.Point(426, 323);
+            this.btnEncrypt.Location = new System.Drawing.Point(396, 323);
             this.btnEncrypt.Name = "btnEncrypt";
-            this.btnEncrypt.Size = new System.Drawing.Size(126, 57);
+            this.btnEncrypt.Size = new System.Drawing.Size(156, 57);
             this.btnEncrypt.TabIndex = 0;
             this.btnEncrypt.Text = "Encrypt";
             this.btnEncrypt.UseVisualStyleBackColor = true;
@@ -67,7 +70,7 @@
             this.btnDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnDecrypt.Location = new System.Drawing.Point(6, 323);
             this.btnDecrypt.Name = "btnDecrypt";
-            this.btnDecrypt.Size = new System.Drawing.Size(125, 57);
+            this.btnDecrypt.Size = new System.Drawing.Size(145, 57);
             this.btnDecrypt.TabIndex = 1;
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.UseVisualStyleBackColor = true;
@@ -78,14 +81,14 @@
             this.txbPath.Enabled = false;
             this.txbPath.Location = new System.Drawing.Point(9, 75);
             this.txbPath.Name = "txbPath";
-            this.txbPath.Size = new System.Drawing.Size(488, 20);
+            this.txbPath.Size = new System.Drawing.Size(497, 20);
             this.txbPath.TabIndex = 2;
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(512, 73);
+            this.btnChoose.Location = new System.Drawing.Point(512, 72);
             this.btnChoose.Name = "btnChoose";
-            this.btnChoose.Size = new System.Drawing.Size(40, 23);
+            this.btnChoose.Size = new System.Drawing.Size(40, 25);
             this.btnChoose.TabIndex = 3;
             this.btnChoose.Text = "...";
             this.btnChoose.UseVisualStyleBackColor = true;
@@ -93,21 +96,21 @@
             // 
             // txbPass
             // 
-            this.txbPass.Location = new System.Drawing.Point(121, 249);
+            this.txbPass.Location = new System.Drawing.Point(116, 248);
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(222, 20);
             this.txbPass.TabIndex = 4;
             this.txbPass.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // label1
+            // lblPassword
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(37, 249);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Password";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblPassword.Location = new System.Drawing.Point(32, 248);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(78, 20);
+            this.lblPassword.TabIndex = 5;
+            this.lblPassword.Text = "Password";
             // 
             // rbFileOrFolder
             // 
@@ -133,20 +136,20 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(137, 356);
+            this.progressBar1.Location = new System.Drawing.Point(157, 356);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(283, 24);
+            this.progressBar1.Size = new System.Drawing.Size(233, 24);
             this.progressBar1.TabIndex = 8;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rbDontDelete);
             this.groupBox1.Controls.Add(this.rbDelete);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lblParent);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(392, 123);
+            this.groupBox1.Location = new System.Drawing.Point(396, 123);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(160, 173);
+            this.groupBox1.Size = new System.Drawing.Size(156, 173);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -172,14 +175,15 @@
             this.rbDelete.Text = "Yes";
             this.rbDelete.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lblParent
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Delete parent files";
+            this.lblParent.AutoSize = true;
+            this.lblParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblParent.Location = new System.Drawing.Point(11, 32);
+            this.lblParent.Name = "lblParent";
+            this.lblParent.Size = new System.Drawing.Size(106, 15);
+            this.lblParent.TabIndex = 0;
+            this.lblParent.Text = "Delete parent files";
             // 
             // groupBox2
             // 
@@ -194,8 +198,8 @@
             this.groupBox2.Controls.Add(this.btnChoose);
             this.groupBox2.Controls.Add(this.rbFileOrFolder);
             this.groupBox2.Controls.Add(this.txbPass);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Controls.Add(this.lblPassword);
+            this.groupBox2.Location = new System.Drawing.Point(12, 30);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(558, 386);
             this.groupBox2.TabIndex = 10;
@@ -205,7 +209,7 @@
             // 
             this.lblProgress.AutoSize = true;
             this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblProgress.Location = new System.Drawing.Point(184, 28);
+            this.lblProgress.Location = new System.Drawing.Point(200, 28);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(170, 20);
             this.lblProgress.TabIndex = 11;
@@ -234,15 +238,37 @@
             this.bwDecrypt.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwDecrypt_ProgressChanged);
             this.bwDecrypt.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwDecrypt_RunWorkerCompleted);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tscbLang});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(581, 27);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tscbLang
+            // 
+            this.tscbLang.Items.AddRange(new object[] {
+            "English",
+            "Polish"});
+            this.tscbLang.Name = "tscbLang";
+            this.tscbLang.Size = new System.Drawing.Size(121, 23);
+            this.tscbLang.Text = "Language";
+            this.tscbLang.SelectedIndexChanged += new System.EventHandler(this.tscbLang_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 413);
+            this.ClientSize = new System.Drawing.Size(581, 422);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Encryptor";
@@ -253,7 +279,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -264,19 +293,21 @@
         private System.Windows.Forms.TextBox txbPath;
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.TextBox txbPass;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.RadioButton rbFileOrFolder;
         private System.Windows.Forms.RadioButton rbDisc;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbDontDelete;
         private System.Windows.Forms.RadioButton rbDelete;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblParent;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.ComponentModel.BackgroundWorker bwEncrypt;
         private System.ComponentModel.BackgroundWorker bwDecrypt;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripComboBox tscbLang;
     }
 }
 

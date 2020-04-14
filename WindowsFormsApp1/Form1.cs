@@ -1,4 +1,5 @@
-﻿using Ionic.Zip;
+﻿using Encryptor;
+using Ionic.Zip;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        #region FIELDS
         string FilePath = "";
         string Password = "";
         List<string> files = new List<string>();
@@ -25,6 +27,8 @@ namespace WindowsFormsApp1
         string working = "Work in progress...";
         string canceled = "Process canceled";
         string completed = "Process completed";
+        TranslateText tt;
+        #endregion
 
         public Form1()
         {
@@ -47,6 +51,9 @@ namespace WindowsFormsApp1
             rbFileOrFolder.Checked = true;
             rbDontDelete.Checked = true;
             btnStop.Enabled = false;
+
+            tt = new TranslateText();
+            TranslateFromList(tt.TranslateToTable(Langs.lang_eng));
         }
 
         #region Crypting
@@ -359,6 +366,18 @@ namespace WindowsFormsApp1
                 progressBar1.Value = progressBar1.Maximum;
             }
         }
+
+        private void tscbLang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tscbLang.SelectedIndex == 1)
+            {
+                TranslateFromList(tt.TranslateToTable(Langs.lang_pol));
+            }
+            else if (tscbLang.SelectedIndex == 0)
+            {
+                TranslateFromList(tt.TranslateToTable(Langs.lang_eng));
+            }
+        }
         #endregion
 
         #region Background workers
@@ -594,6 +613,27 @@ namespace WindowsFormsApp1
             btnEncrypt.Enabled = true;
             btnStop.Enabled = false;
             txbPass.Enabled = true;
+        }
+
+        /// <summary>
+        /// change all controls text to one of language from the list
+        /// </summary>
+        /// <param name="langTable"></param>
+        private void TranslateFromList(string[] langTable)
+        {
+            btnEncrypt.Text = langTable[0];
+            btnDecrypt.Text = langTable[1];
+            lblProgress.Text = langTable[2];
+            working = langTable[3];
+            canceled = langTable[4];
+            completed = langTable[5];
+            lblParent.Text = langTable[6];
+            lblPassword.Text = langTable[7];
+            rbFileOrFolder.Text = langTable[8];
+            rbDisc.Text = langTable[9];
+            rbDelete.Text = langTable[10];
+            rbDontDelete.Text = langTable[11];
+            this.Text = langTable[12];
         }
         #endregion
     }
