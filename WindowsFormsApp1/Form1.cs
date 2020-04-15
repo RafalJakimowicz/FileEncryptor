@@ -473,6 +473,10 @@ namespace WindowsFormsApp1
                     MessageBox.Show(ex.Message);
                 }
             }
+            else
+            {
+                bwDecrypt.CancelAsync();
+            }
         }
 
         private void bwDecrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -578,6 +582,10 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+            else
+            {
+                bwEncrypt.CancelAsync();
             }
         }
 
