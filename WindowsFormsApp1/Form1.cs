@@ -21,12 +21,13 @@ namespace WindowsFormsApp1
         #region FIELDS
         string FilePath = "";
         string Password = "";
-        List<string> files = new List<string>();
+        List<string> files;
         const string SALT = "*sHa256";
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
         string working = "Work in progress...";
         string canceled = "Process canceled";
         string completed = "Process completed";
+        bool stop = false;
         TranslateText tt;
         #endregion
 
@@ -54,6 +55,8 @@ namespace WindowsFormsApp1
 
             tt = new TranslateText();
             TranslateFromList(tt.TranslateToTable(Langs.lang_eng));
+
+            files = new List<string>();
         }
 
         #region Crypting
@@ -364,6 +367,7 @@ namespace WindowsFormsApp1
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            stop = true;
             if (bwDecrypt.IsBusy)
             {
                 bwDecrypt.CancelAsync();
@@ -394,48 +398,17 @@ namespace WindowsFormsApp1
         #region Background workers
         private void bwDecrypt_DoWork(object sender, DoWorkEventArgs e)
         {
-            bwDecrypt.ReportProgress(0);
-            try
+            if (!stop)
             {
-                int x = 0;
-                if (rbFile.Checked)
+                bwDecrypt.ReportProgress(0);
+                try
                 {
-                    string output = FilePath.Substring(0, FilePath.Length - 4);
-                    FileDecrypt(FilePath, output, Password);//decrypt files
-                    try// try unzip
+                    int x = 0;
+                    if (rbFile.Checked)
                     {
-                        Unziping(output);
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-
-                    //delete paretnt files
-                    FileAttributes attr = File.GetAttributes(FilePath);
-                    if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
-                    {
-                        File.Delete(FilePath);
-                    }
-                    else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
-                    {
-                        Directory.Delete(FilePath, true);
-                    }
-                    bwDecrypt.ReportProgress(1);
-                }
-                else if (rbDisc.Checked)
-                {
-                    foreach (var item in files)
-                    {
-                        if (this.bwDecrypt.CancellationPending)
-                        {
-                            e.Cancel = true;
-                            return;
-                        }
-
-                        string output = item.Substring(0, item.Length - 4);
-                        FileDecrypt(item, output, Password);
-                        try
+                        string output = FilePath.Substring(0, FilePath.Length - 4);
+                        FileDecrypt(FilePath, output, Password);//decrypt files
+                        try// try unzip
                         {
                             Unziping(output);
                         }
@@ -444,23 +417,59 @@ namespace WindowsFormsApp1
 
                         }
 
-                        FileAttributes attr = File.GetAttributes(item);
+                        //delete paretnt files
+                        FileAttributes attr = File.GetAttributes(FilePath);
                         if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
                         {
-                            File.Delete(item);
+                            File.Delete(FilePath);
                         }
                         else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
                         {
-                            Directory.Delete(item, true);
+                            Directory.Delete(FilePath, true);
                         }
-                        x++;
-                        bwDecrypt.ReportProgress(x);
+                        bwDecrypt.ReportProgress(1);
+                        stop = true;
+                    }
+                    else if (rbDisc.Checked)
+                    {
+                        foreach (var item in files)
+                        {
+                            if (this.bwDecrypt.CancellationPending)
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            string output = item.Substring(0, item.Length - 4);
+                            FileDecrypt(item, output, Password);
+                            try
+                            {
+                                Unziping(output);
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+
+                            FileAttributes attr = File.GetAttributes(item);
+                            if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                            {
+                                File.Delete(item);
+                            }
+                            else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                            {
+                                Directory.Delete(item, true);
+                            }
+                            x++;
+                            bwDecrypt.ReportProgress(x);
+                            stop = true;
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -492,77 +501,81 @@ namespace WindowsFormsApp1
 
         private void bwEncrypt_DoWork(object sender, DoWorkEventArgs e)
         {
-            int x = 0;
-            bwEncrypt.ReportProgress(0);
-            try
+            if (!stop)
             {
-                if (rbFile.Checked && rbFolder.Checked)
+                int x = 0;
+                bwEncrypt.ReportProgress(0);
+                try
                 {
-
-                    FileAttributes attr = File.GetAttributes(FilePath);
-                    if (attr.HasFlag(FileAttributes.Directory))
+                    if (rbFile.Checked || rbFolder.Checked)
                     {
-                        string zipfile = Ziping(FilePath);
-                        FileEncrypt(zipfile, Password);
-                        File.Delete(zipfile);
-                    }
-                    else
-                    {
-                        FileEncrypt(FilePath, Password);
-                    }
-
-                    //delete paretnt files
-                    if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
-                    {
-                        File.Delete(FilePath);
-                    }
-                    else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
-                    {
-                        Directory.Delete(FilePath, true);
-                    }
-
-                    bwEncrypt.ReportProgress(1);
-                }
-                else if (rbDisc.Checked)
-                {
-
-                    foreach (var item in files)
-                    {
-                        if (this.bwEncrypt.CancellationPending)
-                        {
-                            e.Cancel = true;
-                            return;
-                        }
-
-                        FileAttributes attr = File.GetAttributes(item);
+                        FileAttributes attr = File.GetAttributes(FilePath);
                         if (attr.HasFlag(FileAttributes.Directory))
                         {
-                            string zipfile = Ziping(item);
+                            string zipfile = Ziping(FilePath);
                             FileEncrypt(zipfile, Password);
                             File.Delete(zipfile);
                         }
                         else
                         {
-                            FileEncrypt(item, Password);
+                            FileEncrypt(FilePath, Password);
                         }
 
+                        //delete paretnt files
                         if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
                         {
-                            File.Delete(item);
+                            File.Delete(FilePath);
                         }
                         else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
                         {
-                            Directory.Delete(item, true);
+                            Directory.Delete(FilePath, true);
                         }
 
-                        x++;
-                        bwEncrypt.ReportProgress(x);
+                        bwEncrypt.ReportProgress(1);
+                        stop = true;
+                    }
+                    else if (rbDisc.Checked)
+                    {
+
+                        foreach (var item in files)
+                        {
+                            if (this.bwEncrypt.CancellationPending)
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            FileAttributes attr = File.GetAttributes(item);
+                            if (attr.HasFlag(FileAttributes.Directory))
+                            {
+                                string zipfile = Ziping(item);
+                                FileEncrypt(zipfile, Password);
+                                File.Delete(zipfile);
+                            }
+                            else
+                            {
+                                FileEncrypt(item, Password);
+                            }
+
+                            if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
+                            {
+                                File.Delete(item);
+                            }
+                            else if (rbDelete.Checked && attr.HasFlag(FileAttributes.Directory))
+                            {
+                                Directory.Delete(item, true);
+                            }
+
+                            x++;
+                            bwEncrypt.ReportProgress(x);
+                        }
+                        stop = true;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
