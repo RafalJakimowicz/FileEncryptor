@@ -43,13 +43,13 @@
             this.rbDelete = new System.Windows.Forms.RadioButton();
             this.lblParent = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbFolder = new System.Windows.Forms.RadioButton();
             this.lblProgress = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.bwEncrypt = new System.ComponentModel.BackgroundWorker();
             this.bwDecrypt = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tscbLang = new System.Windows.Forms.ToolStripComboBox();
-            this.rbFolder = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -148,16 +148,16 @@
             this.groupBox1.Controls.Add(this.rbDelete);
             this.groupBox1.Controls.Add(this.lblParent);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(396, 123);
+            this.groupBox1.Location = new System.Drawing.Point(396, 103);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(156, 173);
+            this.groupBox1.Size = new System.Drawing.Size(156, 214);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
             // rbDontDelete
             // 
             this.rbDontDelete.AutoSize = true;
-            this.rbDontDelete.Location = new System.Drawing.Point(56, 125);
+            this.rbDontDelete.Location = new System.Drawing.Point(51, 149);
             this.rbDontDelete.Name = "rbDontDelete";
             this.rbDontDelete.Size = new System.Drawing.Size(44, 21);
             this.rbDontDelete.TabIndex = 2;
@@ -168,7 +168,7 @@
             // rbDelete
             // 
             this.rbDelete.AutoSize = true;
-            this.rbDelete.Location = new System.Drawing.Point(56, 82);
+            this.rbDelete.Location = new System.Drawing.Point(51, 106);
             this.rbDelete.Name = "rbDelete";
             this.rbDelete.Size = new System.Drawing.Size(50, 21);
             this.rbDelete.TabIndex = 1;
@@ -180,7 +180,7 @@
             // 
             this.lblParent.AutoSize = true;
             this.lblParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblParent.Location = new System.Drawing.Point(11, 32);
+            this.lblParent.Location = new System.Drawing.Point(6, 56);
             this.lblParent.Name = "lblParent";
             this.lblParent.Size = new System.Drawing.Size(106, 15);
             this.lblParent.TabIndex = 0;
@@ -206,6 +206,17 @@
             this.groupBox2.Size = new System.Drawing.Size(558, 386);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
+            // 
+            // rbFolder
+            // 
+            this.rbFolder.AutoSize = true;
+            this.rbFolder.Location = new System.Drawing.Point(253, 169);
+            this.rbFolder.Name = "rbFolder";
+            this.rbFolder.Size = new System.Drawing.Size(54, 17);
+            this.rbFolder.TabIndex = 12;
+            this.rbFolder.TabStop = true;
+            this.rbFolder.Text = "Folder";
+            this.rbFolder.UseVisualStyleBackColor = true;
             // 
             // lblProgress
             // 
@@ -259,17 +270,6 @@
             this.tscbLang.Size = new System.Drawing.Size(121, 23);
             this.tscbLang.Text = "Language";
             this.tscbLang.SelectedIndexChanged += new System.EventHandler(this.tscbLang_SelectedIndexChanged);
-            // 
-            // rbFolder
-            // 
-            this.rbFolder.AutoSize = true;
-            this.rbFolder.Location = new System.Drawing.Point(253, 169);
-            this.rbFolder.Name = "rbFolder";
-            this.rbFolder.Size = new System.Drawing.Size(54, 17);
-            this.rbFolder.TabIndex = 12;
-            this.rbFolder.TabStop = true;
-            this.rbFolder.Text = "Folder";
-            this.rbFolder.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
