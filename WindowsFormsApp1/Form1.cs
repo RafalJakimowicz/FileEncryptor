@@ -95,7 +95,7 @@ namespace WindowsFormsApp1
             byte[] salt = GenerateRandomSalt();
 
             //create output file name
-            FileStream fsCrypt = new FileStream(inputFile + ".mvp", FileMode.Create);
+            FileStream fsCrypt = new FileStream(inputFile + ".tge", FileMode.Create);
 
             //convert password string to byte arrray
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(GeneratePassword(password));
@@ -409,6 +409,13 @@ namespace WindowsFormsApp1
                     if (rbFile.Checked)
                     {
                         string output = FilePath.Substring(0, FilePath.Length - 4);
+
+                        FileInfo fi = new FileInfo(output);
+                        if(fi.Extension != ".tge")
+                        {
+                            return;
+                        }
+
                         FileDecrypt(FilePath, output, Password);//decrypt files
                         try// try unzip
                         {
@@ -436,13 +443,14 @@ namespace WindowsFormsApp1
                     {
                         foreach (var item in files)
                         {
-                            if (this.bwDecrypt.CancellationPending)
+                            string output = item.Substring(0, item.Length - 4);
+
+                            FileInfo fi = new FileInfo(output);
+                            if(fi.Extension != ".tge")
                             {
-                                e.Cancel = true;
-                                return;
+                                continue;
                             }
 
-                            string output = item.Substring(0, item.Length - 4);
                             FileDecrypt(item, output, Password);
                             try
                             {
