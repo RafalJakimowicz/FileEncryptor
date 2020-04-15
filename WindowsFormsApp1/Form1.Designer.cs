@@ -50,6 +50,10 @@
             this.bwDecrypt = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tscbLang = new System.Windows.Forms.ToolStripComboBox();
+            this.txbConfirm = new System.Windows.Forms.TextBox();
+            this.lblConfirm = new System.Windows.Forms.Label();
+            this.txbPercent = new System.Windows.Forms.TextBox();
+            this.lblPercent = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -97,7 +101,7 @@
             // 
             // txbPass
             // 
-            this.txbPass.Location = new System.Drawing.Point(116, 248);
+            this.txbPass.Location = new System.Drawing.Point(168, 210);
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(222, 20);
             this.txbPass.TabIndex = 4;
@@ -107,7 +111,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPassword.Location = new System.Drawing.Point(32, 248);
+            this.lblPassword.Location = new System.Drawing.Point(86, 210);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(78, 20);
             this.lblPassword.TabIndex = 5;
@@ -188,6 +192,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblPercent);
+            this.groupBox2.Controls.Add(this.txbPercent);
+            this.groupBox2.Controls.Add(this.txbConfirm);
+            this.groupBox2.Controls.Add(this.lblConfirm);
             this.groupBox2.Controls.Add(this.rbFolder);
             this.groupBox2.Controls.Add(this.lblProgress);
             this.groupBox2.Controls.Add(this.btnStop);
@@ -271,6 +279,41 @@
             this.tscbLang.Text = "Language";
             this.tscbLang.SelectedIndexChanged += new System.EventHandler(this.tscbLang_SelectedIndexChanged);
             // 
+            // txbConfirm
+            // 
+            this.txbConfirm.Location = new System.Drawing.Point(168, 236);
+            this.txbConfirm.Name = "txbConfirm";
+            this.txbConfirm.Size = new System.Drawing.Size(222, 20);
+            this.txbConfirm.TabIndex = 13;
+            this.txbConfirm.TextChanged += new System.EventHandler(this.txbConfirm_TextChanged);
+            // 
+            // lblConfirm
+            // 
+            this.lblConfirm.AutoSize = true;
+            this.lblConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblConfirm.Location = new System.Drawing.Point(28, 236);
+            this.lblConfirm.Name = "lblConfirm";
+            this.lblConfirm.Size = new System.Drawing.Size(136, 20);
+            this.lblConfirm.TabIndex = 14;
+            this.lblConfirm.Text = "Confirm password";
+            // 
+            // txbPercent
+            // 
+            this.txbPercent.Enabled = false;
+            this.txbPercent.Location = new System.Drawing.Point(168, 273);
+            this.txbPercent.Name = "txbPercent";
+            this.txbPercent.Size = new System.Drawing.Size(70, 20);
+            this.txbPercent.TabIndex = 15;
+            // 
+            // lblPercent
+            // 
+            this.lblPercent.AutoSize = true;
+            this.lblPercent.Location = new System.Drawing.Point(116, 276);
+            this.lblPercent.Name = "lblPercent";
+            this.lblPercent.Size = new System.Drawing.Size(48, 13);
+            this.lblPercent.TabIndex = 16;
+            this.lblPercent.Text = "Progress";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -322,6 +365,10 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripComboBox tscbLang;
         private System.Windows.Forms.RadioButton rbFolder;
+        private System.Windows.Forms.TextBox txbConfirm;
+        private System.Windows.Forms.Label lblConfirm;
+        private System.Windows.Forms.Label lblPercent;
+        private System.Windows.Forms.TextBox txbPercent;
     }
 }
 

@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         #region FIELDS
         string FilePath = "";
         string Password = "";
+        string Confirmed = "";
         List<string> files;
         const string SALT = "*sHa256";
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
@@ -274,6 +275,11 @@ namespace WindowsFormsApp1
         #endregion
 
         #region Controls
+        private void txbConfirm_TextChanged(object sender, EventArgs e)
+        {
+            Confirmed = txbConfirm.Text;
+        }
+
         private void Form1_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -405,13 +411,20 @@ namespace WindowsFormsApp1
                 bwDecrypt.ReportProgress(0);
                 try
                 {
+                    if (Password != Confirmed)
+                    {
+                        stop = true;
+                        MessageBox.Show("Passwords doesnt match!!!");
+                        return;
+                    }
+
                     int x = 0;
                     if (rbFile.Checked)
                     {
                         string output = FilePath.Substring(0, FilePath.Length - 4);
 
                         FileInfo fi = new FileInfo(output);
-                        if(fi.Extension != ".tge")
+                        if (fi.Extension != ".tge")
                         {
                             return;
                         }
@@ -446,7 +459,7 @@ namespace WindowsFormsApp1
                             string output = item.Substring(0, item.Length - 4);
 
                             FileInfo fi = new FileInfo(output);
-                            if(fi.Extension != ".tge")
+                            if (fi.Extension != ".tge")
                             {
                                 continue;
                             }
@@ -490,6 +503,7 @@ namespace WindowsFormsApp1
         private void bwDecrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
+            //txbPercent.Text = $"{1 / e.ProgressPercentage * 100}%";
             if (progressBar1.Value == progressBar1.Maximum)
             {
                 bwDecrypt.CancelAsync();
@@ -521,6 +535,13 @@ namespace WindowsFormsApp1
                 bwEncrypt.ReportProgress(0);
                 try
                 {
+                    if (Password != Confirmed)
+                    {
+                        stop = true;
+                        MessageBox.Show("Passwords doesnt match!!!");
+                        return;
+                    }
+
                     if (rbFile.Checked || rbFolder.Checked)
                     {
                         FileAttributes attr = File.GetAttributes(FilePath);
@@ -600,6 +621,7 @@ namespace WindowsFormsApp1
         private void bwEncrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
+            //txbPercent.Text = $"{1 / e.ProgressPercentage * 100}%";
             if (progressBar1.Value == progressBar1.Maximum)
             {
                 bwEncrypt.CancelAsync();
@@ -681,7 +703,8 @@ namespace WindowsFormsApp1
             tscbLang.Items.Add(langTable[14]);
             tscbLang.Items.Add(langTable[15]);
             tscbLang.Text = langTable[16];
+            lblConfirm.Text = langTable[17];
         }
-        #endregion
+        #endregion  
     }
 }
