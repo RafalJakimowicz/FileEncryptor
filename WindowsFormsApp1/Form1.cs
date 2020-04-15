@@ -294,6 +294,7 @@ namespace WindowsFormsApp1
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            stop = false;
             AllEnableFalse();
             lblProgress.Text = working;
             bwEncrypt.RunWorkerAsync();
@@ -306,6 +307,7 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
+            stop = false;
             AllEnableFalse();
             lblProgress.Text = working;
             bwDecrypt.RunWorkerAsync();
