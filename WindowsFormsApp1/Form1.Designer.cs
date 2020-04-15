@@ -35,7 +35,7 @@
             this.btnChoose = new System.Windows.Forms.Button();
             this.txbPass = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.rbFileOrFolder = new System.Windows.Forms.RadioButton();
+            this.rbFile = new System.Windows.Forms.RadioButton();
             this.rbDisc = new System.Windows.Forms.RadioButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,6 +49,7 @@
             this.bwDecrypt = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tscbLang = new System.Windows.Forms.ToolStripComboBox();
+            this.rbFolder = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -112,26 +113,26 @@
             this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password";
             // 
-            // rbFileOrFolder
+            // rbFile
             // 
-            this.rbFileOrFolder.AutoSize = true;
-            this.rbFileOrFolder.Location = new System.Drawing.Point(90, 169);
-            this.rbFileOrFolder.Name = "rbFileOrFolder";
-            this.rbFileOrFolder.Size = new System.Drawing.Size(41, 17);
-            this.rbFileOrFolder.TabIndex = 6;
-            this.rbFileOrFolder.TabStop = true;
-            this.rbFileOrFolder.Text = "File";
-            this.rbFileOrFolder.UseVisualStyleBackColor = true;
+            this.rbFile.AutoSize = true;
+            this.rbFile.Location = new System.Drawing.Point(90, 169);
+            this.rbFile.Name = "rbFile";
+            this.rbFile.Size = new System.Drawing.Size(41, 17);
+            this.rbFile.TabIndex = 6;
+            this.rbFile.TabStop = true;
+            this.rbFile.Text = "File";
+            this.rbFile.UseVisualStyleBackColor = true;
             // 
             // rbDisc
             // 
             this.rbDisc.AutoSize = true;
-            this.rbDisc.Location = new System.Drawing.Point(222, 169);
+            this.rbDisc.Location = new System.Drawing.Point(173, 169);
             this.rbDisc.Name = "rbDisc";
-            this.rbDisc.Size = new System.Drawing.Size(90, 17);
+            this.rbDisc.Size = new System.Drawing.Size(46, 17);
             this.rbDisc.TabIndex = 7;
             this.rbDisc.TabStop = true;
-            this.rbDisc.Text = "Disc or Folder";
+            this.rbDisc.Text = "Disc";
             this.rbDisc.UseVisualStyleBackColor = true;
             // 
             // progressBar1
@@ -187,6 +188,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rbFolder);
             this.groupBox2.Controls.Add(this.lblProgress);
             this.groupBox2.Controls.Add(this.btnStop);
             this.groupBox2.Controls.Add(this.txbPath);
@@ -196,7 +198,7 @@
             this.groupBox2.Controls.Add(this.btnDecrypt);
             this.groupBox2.Controls.Add(this.rbDisc);
             this.groupBox2.Controls.Add(this.btnChoose);
-            this.groupBox2.Controls.Add(this.rbFileOrFolder);
+            this.groupBox2.Controls.Add(this.rbFile);
             this.groupBox2.Controls.Add(this.txbPass);
             this.groupBox2.Controls.Add(this.lblPassword);
             this.groupBox2.Location = new System.Drawing.Point(12, 30);
@@ -258,6 +260,17 @@
             this.tscbLang.Text = "Language";
             this.tscbLang.SelectedIndexChanged += new System.EventHandler(this.tscbLang_SelectedIndexChanged);
             // 
+            // rbFolder
+            // 
+            this.rbFolder.AutoSize = true;
+            this.rbFolder.Location = new System.Drawing.Point(253, 169);
+            this.rbFolder.Name = "rbFolder";
+            this.rbFolder.Size = new System.Drawing.Size(54, 17);
+            this.rbFolder.TabIndex = 12;
+            this.rbFolder.TabStop = true;
+            this.rbFolder.Text = "Folder";
+            this.rbFolder.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -294,7 +307,7 @@
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.TextBox txbPass;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.RadioButton rbFileOrFolder;
+        private System.Windows.Forms.RadioButton rbFile;
         private System.Windows.Forms.RadioButton rbDisc;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -308,6 +321,7 @@
         private System.Windows.Forms.Label lblProgress;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripComboBox tscbLang;
+        private System.Windows.Forms.RadioButton rbFolder;
     }
 }
 

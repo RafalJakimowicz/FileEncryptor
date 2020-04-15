@@ -48,7 +48,7 @@ namespace WindowsFormsApp1
             bwEncrypt.WorkerSupportsCancellation = true;
             #endregion
 
-            rbFileOrFolder.Checked = true;
+            rbFile.Checked = true;
             rbDontDelete.Checked = true;
             btnStop.Enabled = false;
 
@@ -310,7 +310,7 @@ namespace WindowsFormsApp1
 
         private void btnChoose_Click(object sender, EventArgs e)
         {
-            if (rbFileOrFolder.Checked)
+            if (rbFile.Checked)
             {
                 using (OpenFileDialog opf = new OpenFileDialog())
                 {
@@ -320,6 +320,17 @@ namespace WindowsFormsApp1
                     }
                 }
                 progressBar1.Maximum = 1;
+            }
+            else if (rbFolder.Checked)
+            {
+                using (var fbd = new FolderBrowserDialog())
+                {
+                    DialogResult result = fbd.ShowDialog();
+                    if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
+                    {
+                        FilePath = fbd.SelectedPath;
+                    }
+                }
             }
             else if (rbDisc.Checked)
             {
@@ -387,7 +398,7 @@ namespace WindowsFormsApp1
             try
             {
                 int x = 0;
-                if (rbFileOrFolder.Checked)
+                if (rbFile.Checked)
                 {
                     string output = FilePath.Substring(0, FilePath.Length - 4);
                     FileDecrypt(FilePath, output, Password);//decrypt files
@@ -485,7 +496,7 @@ namespace WindowsFormsApp1
             bwEncrypt.ReportProgress(0);
             try
             {
-                if (rbFileOrFolder.Checked)
+                if (rbFile.Checked && rbFolder.Checked)
                 {
 
                     FileAttributes attr = File.GetAttributes(FilePath);
@@ -591,7 +602,7 @@ namespace WindowsFormsApp1
             rbDelete.Enabled = false;
             rbDisc.Enabled = false;
             rbDontDelete.Enabled = false;
-            rbFileOrFolder.Enabled = false;
+            rbFile.Enabled = false;
             btnChoose.Enabled = false;
             btnDecrypt.Enabled = false;
             btnEncrypt.Enabled = false;
@@ -607,7 +618,7 @@ namespace WindowsFormsApp1
             rbDelete.Enabled = true;
             rbDisc.Enabled = true;
             rbDontDelete.Enabled = true;
-            rbFileOrFolder.Enabled = true;
+            rbFile.Enabled = true;
             btnChoose.Enabled = true;
             btnDecrypt.Enabled = true;
             btnEncrypt.Enabled = true;
@@ -629,15 +640,16 @@ namespace WindowsFormsApp1
             completed = langTable[5];
             lblParent.Text = langTable[6];
             lblPassword.Text = langTable[7];
-            rbFileOrFolder.Text = langTable[8];
+            rbFile.Text = langTable[8];
             rbDisc.Text = langTable[9];
-            rbDelete.Text = langTable[10];
-            rbDontDelete.Text = langTable[11];
-            this.Text = langTable[12];
+            rbFolder.Text = langTable[10];
+            rbDelete.Text = langTable[11];
+            rbDontDelete.Text = langTable[12];
+            this.Text = langTable[13];
             tscbLang.Items.Clear();
-            tscbLang.Items.Add(langTable[13]);
             tscbLang.Items.Add(langTable[14]);
-            tscbLang.Text = langTable[15];
+            tscbLang.Items.Add(langTable[15]);
+            tscbLang.Text = langTable[16];
         }
         #endregion
     }

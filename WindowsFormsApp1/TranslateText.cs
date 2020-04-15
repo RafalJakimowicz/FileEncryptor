@@ -23,10 +23,10 @@ namespace Encryptor
             {
                 pathToFile += "\\lang_pol.lang";
             }
-            string[] table = new string[16];
+            string[] table = new string[17];
             using (StreamReader sr = new StreamReader(pathToFile))
             {
-                for (int i = 0; i < 16; i++)
+                for (int i = 0; i < 17; i++)
                 {
                     table[i] = sr.ReadLine();
                 }
