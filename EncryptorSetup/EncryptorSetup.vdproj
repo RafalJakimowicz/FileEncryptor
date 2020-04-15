@@ -22,18 +22,12 @@
         "Entry"
         {
         "MsmKey" = "8:_87C688368C8318A4B5C4DEFE044F3645"
-        "OwnerKey" = "8:_DC879CF7DAC645EBBBF634EA12DCC36A"
+        "OwnerKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_944560FD4FF24A0B89800316F428156F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DC879CF7DAC645EBBBF634EA12DCC36A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -45,14 +39,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F2670E2E7B3B8F3A125977286696A1FC"
-        "OwnerKey" = "8:_DC879CF7DAC645EBBBF634EA12DCC36A"
+        "OwnerKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DC879CF7DAC645EBBBF634EA12DCC36A"
+        "OwnerKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -475,7 +475,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_797BF4A09B994CF085A2EAE34E5C4AFF"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A2505D8F8E1A435D986BAD95E0C42D8E"
             {
             "Name" = "8:Encryptor"
             "Arguments" = "8:"
@@ -483,13 +483,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DC879CF7DAC645EBBBF634EA12DCC36A"
-            "Folder" = "8:_1725CBCB893349F9A6BC05F65E0AE275"
+            "Target" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+            "Folder" = "8:_AD73AFA3A8D9494E843AFCC5AA7318D8"
             "WorkingFolder" = "8:_415C8E35B8CA4B27A92BC41C175B58E2"
             "Icon" = "8:_32E83056C8C04CE2AFD1206FCCE75CDB"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A3534337AF0A480493368CB72951F4E5"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AF2A9B7972754FAA80066C1223785857"
             {
             "Name" = "8:Encryptor"
             "Arguments" = "8:"
@@ -497,8 +497,8 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DC879CF7DAC645EBBBF634EA12DCC36A"
-            "Folder" = "8:_AD73AFA3A8D9494E843AFCC5AA7318D8"
+            "Target" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+            "Folder" = "8:_1725CBCB893349F9A6BC05F65E0AE275"
             "WorkingFolder" = "8:_415C8E35B8CA4B27A92BC41C175B58E2"
             "Icon" = "8:_32E83056C8C04CE2AFD1206FCCE75CDB"
             "Feature" = "8:"
@@ -902,7 +902,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DC879CF7DAC645EBBBF634EA12DCC36A"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EB8607AA29394095A49AFE888D79AA9B"
             {
             "SourcePath" = "8:..\\WindowsFormsApp1\\obj\\Debug\\Encryptor.exe"
             "TargetName" = "8:"
