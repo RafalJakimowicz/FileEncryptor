@@ -503,15 +503,22 @@ namespace WindowsFormsApp1
         private void bwDecrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            //txbPercent.Text = $"{1 / e.ProgressPercentage * 100}%";
+            int precenteg = 100 / progressBar1.Maximum;
+            if (e.ProgressPercentage != 0)
+            {
+                txbPercent.Text = $"{(precenteg * e.ProgressPercentage)}%";
+            }
+
             if (progressBar1.Value == progressBar1.Maximum)
             {
                 bwDecrypt.CancelAsync();
+                stop = true;
             }
         }
 
         private void bwDecrypt_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            stop = true;
             if (e.Cancelled)
             {
                 lblProgress.Text = canceled;
@@ -621,15 +628,22 @@ namespace WindowsFormsApp1
         private void bwEncrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            //txbPercent.Text = $"{1 / e.ProgressPercentage * 100}%";
+            int precenteg = 100 / progressBar1.Maximum;
+            if (e.ProgressPercentage != 0)
+            {
+                txbPercent.Text = $"{(precenteg * e.ProgressPercentage)}%";
+            }
+
             if (progressBar1.Value == progressBar1.Maximum)
             {
                 bwEncrypt.CancelAsync();
+                stop = true;
             }
         }
 
         private void bwEncrypt_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            stop = true;
             if (e.Cancelled)
             {
                 lblProgress.Text = canceled;
