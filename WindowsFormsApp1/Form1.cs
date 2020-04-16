@@ -514,7 +514,7 @@ namespace WindowsFormsApp1
         private void bwDecrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            double precenteg = Math.Round(100.0 / (double)progressBar1.Maximum, 2);
+            double precenteg = Math.Round(100.0 / (double)progressBar1.Maximum, 3);
             if (e.ProgressPercentage != 0)
             {
                 txbPercent.Text = $"{(precenteg * e.ProgressPercentage)}%";
@@ -639,7 +639,7 @@ namespace WindowsFormsApp1
         private void bwEncrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            double precenteg = Math.Round(100.0 / (double)progressBar1.Maximum, 2);
+            double precenteg = Math.Round(100.0 / (double)progressBar1.Maximum, 3);
             if (e.ProgressPercentage != 0)
             {
                 txbPercent.Text = $"{(precenteg * e.ProgressPercentage)}%";
