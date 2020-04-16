@@ -313,6 +313,17 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
+            List<string> ls = new List<string>();
+            for (int i = 0; i < files.Count; i++)
+            {
+                FileInfo fi = new FileInfo(files[i]);
+                if (fi.Extension == ".tge")
+                {
+                    ls.Add(files[i]);
+                }
+            }
+            files = ls;
+            progressBar1.Maximum = files.Count;
             stop = false;
             AllEnableFalse();
             lblProgress.Text = working;
@@ -458,7 +469,7 @@ namespace WindowsFormsApp1
                         {
                             string output = item.Substring(0, item.Length - 4);
 
-                            FileInfo fi = new FileInfo(output);
+                            FileInfo fi = new FileInfo(item);
                             if (fi.Extension != ".tge")
                             {
                                 continue;
@@ -503,7 +514,7 @@ namespace WindowsFormsApp1
         private void bwDecrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            int precenteg = 100 / progressBar1.Maximum;
+            double precenteg = Math.Round(100.0 / (double)progressBar1.Maximum, 2);
             if (e.ProgressPercentage != 0)
             {
                 txbPercent.Text = $"{(precenteg * e.ProgressPercentage)}%";
@@ -628,7 +639,7 @@ namespace WindowsFormsApp1
         private void bwEncrypt_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            int precenteg = 100 / progressBar1.Maximum;
+            double precenteg = Math.Round(100.0 / (double)progressBar1.Maximum, 2);
             if (e.ProgressPercentage != 0)
             {
                 txbPercent.Text = $"{(precenteg * e.ProgressPercentage)}%";
@@ -675,6 +686,7 @@ namespace WindowsFormsApp1
             btnEncrypt.Enabled = false;
             btnStop.Enabled = true;
             txbPass.Enabled = false;
+            txbConfirm.Enabled = false;
         }
 
         /// <summary>
@@ -691,6 +703,7 @@ namespace WindowsFormsApp1
             btnEncrypt.Enabled = true;
             btnStop.Enabled = false;
             txbPass.Enabled = true;
+            txbConfirm.Enabled = true;
         }
 
         /// <summary>
