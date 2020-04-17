@@ -339,6 +339,7 @@ namespace WindowsFormsApp1
                     if (opf.ShowDialog() == DialogResult.OK)
                     {
                         FilePath = opf.FileName;
+                        txbPath.Text = opf.FileName;
                     }
                 }
                 progressBar1.Maximum = 1;
@@ -351,6 +352,7 @@ namespace WindowsFormsApp1
                     if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
                     {
                         FilePath = fbd.SelectedPath;
+                        txbPath.Text = fbd.SelectedPath;
                     }
                 }
             }
