@@ -318,6 +318,8 @@ namespace WindowsFormsApp1
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
+            progressBar1.Maximum = files.Count;
+            stop = false;
             List<string> ls = new List<string>();
             for (int i = 0; i < files.Count; i++)
             {
@@ -328,8 +330,6 @@ namespace WindowsFormsApp1
                 }
             }
             files = ls;
-            progressBar1.Maximum = files.Count;
-            stop = false;
             AllEnableFalse();
             lblProgress.Text = working;
             bwDecrypt.RunWorkerAsync();
@@ -726,6 +726,7 @@ namespace WindowsFormsApp1
             rbDisc.Enabled = false;
             rbDontDelete.Enabled = false;
             rbFile.Enabled = false;
+            rbFolder.Enabled = false;
             btnChoose.Enabled = false;
             btnDecrypt.Enabled = false;
             btnEncrypt.Enabled = false;
@@ -743,6 +744,7 @@ namespace WindowsFormsApp1
             rbDisc.Enabled = true;
             rbDontDelete.Enabled = true;
             rbFile.Enabled = true;
+            rbFolder.Enabled = true;
             btnChoose.Enabled = true;
             btnDecrypt.Enabled = true;
             btnEncrypt.Enabled = true;
