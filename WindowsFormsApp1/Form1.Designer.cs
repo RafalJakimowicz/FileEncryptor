@@ -34,7 +34,6 @@
             this.txbPath = new System.Windows.Forms.TextBox();
             this.btnChoose = new System.Windows.Forms.Button();
             this.txbPass = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
             this.rbFile = new System.Windows.Forms.RadioButton();
             this.rbDisc = new System.Windows.Forms.RadioButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -43,6 +42,9 @@
             this.rbDelete = new System.Windows.Forms.RadioButton();
             this.lblParent = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblPercent = new System.Windows.Forms.Label();
+            this.txbPercent = new System.Windows.Forms.TextBox();
+            this.txbConfirm = new System.Windows.Forms.TextBox();
             this.rbFolder = new System.Windows.Forms.RadioButton();
             this.lblProgress = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
@@ -50,10 +52,6 @@
             this.bwDecrypt = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tscbLang = new System.Windows.Forms.ToolStripComboBox();
-            this.txbConfirm = new System.Windows.Forms.TextBox();
-            this.lblConfirm = new System.Windows.Forms.Label();
-            this.txbPercent = new System.Windows.Forms.TextBox();
-            this.lblPercent = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -101,26 +99,19 @@
             // 
             // txbPass
             // 
-            this.txbPass.Location = new System.Drawing.Point(168, 210);
+            this.txbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txbPass.Location = new System.Drawing.Point(35, 181);
             this.txbPass.Name = "txbPass";
-            this.txbPass.Size = new System.Drawing.Size(222, 20);
+            this.txbPass.Size = new System.Drawing.Size(322, 26);
             this.txbPass.TabIndex = 4;
             this.txbPass.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPassword.Location = new System.Drawing.Point(86, 210);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(78, 20);
-            this.lblPassword.TabIndex = 5;
-            this.lblPassword.Text = "Password";
+            this.txbPass.Enter += new System.EventHandler(this.txbPass_Enter);
+            this.txbPass.Leave += new System.EventHandler(this.txbPass_Leave);
             // 
             // rbFile
             // 
             this.rbFile.AutoSize = true;
-            this.rbFile.Location = new System.Drawing.Point(90, 169);
+            this.rbFile.Location = new System.Drawing.Point(88, 140);
             this.rbFile.Name = "rbFile";
             this.rbFile.Size = new System.Drawing.Size(41, 17);
             this.rbFile.TabIndex = 6;
@@ -131,7 +122,7 @@
             // rbDisc
             // 
             this.rbDisc.AutoSize = true;
-            this.rbDisc.Location = new System.Drawing.Point(173, 169);
+            this.rbDisc.Location = new System.Drawing.Point(171, 140);
             this.rbDisc.Name = "rbDisc";
             this.rbDisc.Size = new System.Drawing.Size(46, 17);
             this.rbDisc.TabIndex = 7;
@@ -184,18 +175,17 @@
             // 
             this.lblParent.AutoSize = true;
             this.lblParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblParent.Location = new System.Drawing.Point(6, 56);
+            this.lblParent.Location = new System.Drawing.Point(17, 56);
             this.lblParent.Name = "lblParent";
-            this.lblParent.Size = new System.Drawing.Size(106, 15);
+            this.lblParent.Size = new System.Drawing.Size(48, 15);
             this.lblParent.TabIndex = 0;
-            this.lblParent.Text = "Delete parent files";
+            this.lblParent.Text = "Backup";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblPercent);
             this.groupBox2.Controls.Add(this.txbPercent);
             this.groupBox2.Controls.Add(this.txbConfirm);
-            this.groupBox2.Controls.Add(this.lblConfirm);
             this.groupBox2.Controls.Add(this.rbFolder);
             this.groupBox2.Controls.Add(this.lblProgress);
             this.groupBox2.Controls.Add(this.btnStop);
@@ -208,17 +198,44 @@
             this.groupBox2.Controls.Add(this.btnChoose);
             this.groupBox2.Controls.Add(this.rbFile);
             this.groupBox2.Controls.Add(this.txbPass);
-            this.groupBox2.Controls.Add(this.lblPassword);
             this.groupBox2.Location = new System.Drawing.Point(12, 30);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(558, 386);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
+            // lblPercent
+            // 
+            this.lblPercent.AutoSize = true;
+            this.lblPercent.Location = new System.Drawing.Point(119, 271);
+            this.lblPercent.Name = "lblPercent";
+            this.lblPercent.Size = new System.Drawing.Size(48, 13);
+            this.lblPercent.TabIndex = 16;
+            this.lblPercent.Text = "Progress";
+            // 
+            // txbPercent
+            // 
+            this.txbPercent.Enabled = false;
+            this.txbPercent.Location = new System.Drawing.Point(171, 268);
+            this.txbPercent.Name = "txbPercent";
+            this.txbPercent.Size = new System.Drawing.Size(70, 20);
+            this.txbPercent.TabIndex = 15;
+            // 
+            // txbConfirm
+            // 
+            this.txbConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txbConfirm.Location = new System.Drawing.Point(35, 218);
+            this.txbConfirm.Name = "txbConfirm";
+            this.txbConfirm.Size = new System.Drawing.Size(322, 26);
+            this.txbConfirm.TabIndex = 13;
+            this.txbConfirm.TextChanged += new System.EventHandler(this.txbConfirm_TextChanged);
+            this.txbConfirm.Enter += new System.EventHandler(this.txbConfirm_Enter);
+            this.txbConfirm.Leave += new System.EventHandler(this.txbConfirm_Leave);
+            // 
             // rbFolder
             // 
             this.rbFolder.AutoSize = true;
-            this.rbFolder.Location = new System.Drawing.Point(253, 169);
+            this.rbFolder.Location = new System.Drawing.Point(251, 140);
             this.rbFolder.Name = "rbFolder";
             this.rbFolder.Size = new System.Drawing.Size(54, 17);
             this.rbFolder.TabIndex = 12;
@@ -279,41 +296,6 @@
             this.tscbLang.Text = "Language";
             this.tscbLang.SelectedIndexChanged += new System.EventHandler(this.tscbLang_SelectedIndexChanged);
             // 
-            // txbConfirm
-            // 
-            this.txbConfirm.Location = new System.Drawing.Point(168, 236);
-            this.txbConfirm.Name = "txbConfirm";
-            this.txbConfirm.Size = new System.Drawing.Size(222, 20);
-            this.txbConfirm.TabIndex = 13;
-            this.txbConfirm.TextChanged += new System.EventHandler(this.txbConfirm_TextChanged);
-            // 
-            // lblConfirm
-            // 
-            this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblConfirm.Location = new System.Drawing.Point(28, 236);
-            this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(136, 20);
-            this.lblConfirm.TabIndex = 14;
-            this.lblConfirm.Text = "Confirm password";
-            // 
-            // txbPercent
-            // 
-            this.txbPercent.Enabled = false;
-            this.txbPercent.Location = new System.Drawing.Point(168, 273);
-            this.txbPercent.Name = "txbPercent";
-            this.txbPercent.Size = new System.Drawing.Size(70, 20);
-            this.txbPercent.TabIndex = 15;
-            // 
-            // lblPercent
-            // 
-            this.lblPercent.AutoSize = true;
-            this.lblPercent.Location = new System.Drawing.Point(116, 276);
-            this.lblPercent.Name = "lblPercent";
-            this.lblPercent.Size = new System.Drawing.Size(48, 13);
-            this.lblPercent.TabIndex = 16;
-            this.lblPercent.Text = "Progress";
-            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -349,7 +331,6 @@
         private System.Windows.Forms.TextBox txbPath;
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.TextBox txbPass;
-        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.RadioButton rbFile;
         private System.Windows.Forms.RadioButton rbDisc;
         private System.Windows.Forms.ProgressBar progressBar1;
@@ -366,7 +347,6 @@
         private System.Windows.Forms.ToolStripComboBox tscbLang;
         private System.Windows.Forms.RadioButton rbFolder;
         private System.Windows.Forms.TextBox txbConfirm;
-        private System.Windows.Forms.Label lblConfirm;
         private System.Windows.Forms.Label lblPercent;
         private System.Windows.Forms.TextBox txbPercent;
     }

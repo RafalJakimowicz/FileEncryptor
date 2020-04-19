@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
         string completed = "Process completed";
         bool stop = false;
         TranslateText tt;
+        Langs lang;
         #endregion
 
         public Form1()
@@ -56,8 +57,12 @@ namespace WindowsFormsApp1
 
             tt = new TranslateText();
             TranslateFromList(tt.TranslateToTable(Langs.lang_eng));
+            lang = Langs.lang_eng;
 
             files = new List<string>();
+
+            txbConfirm.ForeColor = Color.Gray;
+            txbPass.ForeColor = Color.Gray;
         }
 
         #region Crypting
@@ -408,10 +413,48 @@ namespace WindowsFormsApp1
             if (tscbLang.SelectedIndex == 1)
             {
                 TranslateFromList(tt.TranslateToTable(Langs.lang_pol));
+                lang = Langs.lang_pol;
             }
             else if (tscbLang.SelectedIndex == 0)
             {
                 TranslateFromList(tt.TranslateToTable(Langs.lang_eng));
+                lang = Langs.lang_eng;
+            }
+        }
+
+        private void txbPass_Enter(object sender, EventArgs e)
+        {
+            if (txbPass.Text == "Hasło" || txbPass.Text == "Password")
+            {
+                txbPass.Text = "";
+                txbPass.ForeColor = Color.Black;
+            }
+        }
+
+        private void txbPass_Leave(object sender, EventArgs e)
+        {
+            if (txbPass.Text.Length == 0)
+            {
+                TranslateFromList(tt.TranslateToTable(lang));
+                txbPass.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txbConfirm_Enter(object sender, EventArgs e)
+        {
+            if (txbConfirm.Text == "Potwierdź hasło" || txbConfirm.Text == "Confirm password")
+            {
+                txbConfirm.Text = "";
+                txbConfirm.ForeColor = Color.Black;
+            }
+        }
+
+        private void txbConfirm_Leave(object sender, EventArgs e)
+        {
+            if (txbConfirm.Text.Length == 0)
+            {
+                TranslateFromList(tt.TranslateToTable(lang));
+                txbConfirm.ForeColor = Color.Gray;
             }
         }
         #endregion
@@ -721,19 +764,19 @@ namespace WindowsFormsApp1
             canceled = langTable[4];
             completed = langTable[5];
             lblParent.Text = langTable[6];
-            lblPassword.Text = langTable[7];
+            txbPass.Text = langTable[7];
             rbFile.Text = langTable[8];
             rbDisc.Text = langTable[9];
             rbFolder.Text = langTable[10];
-            rbDelete.Text = langTable[11];
-            rbDontDelete.Text = langTable[12];
+            rbDelete.Text = langTable[12];
+            rbDontDelete.Text = langTable[11];
             this.Text = langTable[13];
             tscbLang.Items.Clear();
             tscbLang.Items.Add(langTable[14]);
             tscbLang.Items.Add(langTable[15]);
             tscbLang.Text = langTable[16];
-            lblConfirm.Text = langTable[17];
+            txbConfirm.Text = langTable[17];
         }
-        #endregion  
+        #endregion
     }
 }
