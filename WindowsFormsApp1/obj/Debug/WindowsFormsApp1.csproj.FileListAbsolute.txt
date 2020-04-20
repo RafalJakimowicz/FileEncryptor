@@ -25,3 +25,4 @@ D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Encryptor.pdb
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Encryptor.Properties.Resources.resources
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Encryptor.exe
 D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Encryptor.pdb
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache

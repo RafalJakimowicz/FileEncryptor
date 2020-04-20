@@ -329,6 +329,7 @@ namespace WindowsFormsApp1
                     ls.Add(files[i]);
                 }
             }
+            progressBar1.Maximum = ls.Count;
             files = ls;
             AllEnableFalse();
             lblProgress.Text = working;
@@ -464,7 +465,7 @@ namespace WindowsFormsApp1
         {
             if (!stop)
             {
-                bwDecrypt.ReportProgress(0);
+                bwDecrypt.ReportProgress(progressBar1.Minimum);
                 try
                 {
                     if (Password != Confirmed)
@@ -479,7 +480,7 @@ namespace WindowsFormsApp1
                     {
                         string output = FilePath.Substring(0, FilePath.Length - 4);
 
-                        FileInfo fi = new FileInfo(output);
+                        FileInfo fi = new FileInfo(FilePath);
                         if (fi.Extension != ".tge")
                         {
                             return;
@@ -505,7 +506,7 @@ namespace WindowsFormsApp1
                         {
                             Directory.Delete(FilePath, true);
                         }
-                        bwDecrypt.ReportProgress(1);
+                        bwDecrypt.ReportProgress(progressBar1.Maximum);
                         stop = true;
                     }
                     else if (rbDisc.Checked)
@@ -778,6 +779,7 @@ namespace WindowsFormsApp1
             tscbLang.Items.Add(langTable[15]);
             tscbLang.Text = langTable[16];
             txbConfirm.Text = langTable[17];
+            lblPercent.Text = langTable[18];
         }
         #endregion
     }
