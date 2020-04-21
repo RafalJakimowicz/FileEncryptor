@@ -553,6 +553,7 @@ namespace WindowsFormsApp1
             }
             else
             {
+                e.Cancel = true;
                 bwDecrypt.CancelAsync();
             }
         }
@@ -678,6 +679,7 @@ namespace WindowsFormsApp1
             }
             else
             {
+                e.Cancel = true;
                 bwEncrypt.CancelAsync();
             }
         }
