@@ -52,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AESCrypting.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +94,11 @@
     <Content Include="favicon.ico" />
     <None Include="lang\lang_eng.lang" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\api-encryping\api-encryping.csproj">
+      <Project>{97f38e6b-393a-422b-8d85-eabb020cfbff}</Project>
+      <Name>api-encryping</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

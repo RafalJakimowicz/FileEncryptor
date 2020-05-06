@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
 
 namespace Encryptor
 {
-    class AESCrypting
+    public class AESCrypting
     {
         const string SALT = "*sHa256";
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
@@ -91,7 +91,6 @@ namespace Encryptor
             {
                 while ((read = fsIn.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    Application.DoEvents(); // -> for responsive GUI, using Task will be better!
                     cs.Write(buffer, 0, read);
                 }
 
@@ -146,7 +145,6 @@ namespace Encryptor
             {
                 while ((read = cs.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    Application.DoEvents();
                     fsOut.Write(buffer, 0, read);
                 }
             }
