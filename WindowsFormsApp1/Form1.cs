@@ -1,5 +1,4 @@
 ﻿using Encryptor;
-using Ionic.Zip;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

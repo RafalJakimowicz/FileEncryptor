@@ -22,12 +22,18 @@
         "Entry"
         {
         "MsmKey" = "8:_87C688368C8318A4B5C4DEFE044F3645"
-        "OwnerKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+        "OwnerKey" = "8:_A136210A4897494A9370FC18FEBC7F0B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_944560FD4FF24A0B89800316F428156F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A136210A4897494A9370FC18FEBC7F0B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -39,20 +45,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F2670E2E7B3B8F3A125977286696A1FC"
-        "OwnerKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+        "OwnerKey" = "8:_A136210A4897494A9370FC18FEBC7F0B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+        "OwnerKey" = "8:_A136210A4897494A9370FC18FEBC7F0B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,6 +124,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -355,7 +363,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EncryptorSetup"
         "ProductCode" = "8:{F373C31F-83E0-4DF5-83C0-C36A595F4BF2}"
-        "PackageCode" = "8:{208427BB-13D3-4FE0-8156-7B5F2935B418}"
+        "PackageCode" = "8:{88EDAC99-B66A-4B22-A1E3-C978DC2E1B6A}"
         "UpgradeCode" = "8:{DBB16BB0-3C92-4A34-AFC8-C0A9482098F9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -475,7 +483,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A2505D8F8E1A435D986BAD95E0C42D8E"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_16C5FD75F4274F6584348CCD19A408E7"
             {
             "Name" = "8:Encryptor"
             "Arguments" = "8:"
@@ -483,13 +491,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+            "Target" = "8:_A136210A4897494A9370FC18FEBC7F0B"
             "Folder" = "8:_AD73AFA3A8D9494E843AFCC5AA7318D8"
             "WorkingFolder" = "8:_415C8E35B8CA4B27A92BC41C175B58E2"
-            "Icon" = "8:_32E83056C8C04CE2AFD1206FCCE75CDB"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AF2A9B7972754FAA80066C1223785857"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B44E1E12B67B404985E63A8EFF54ED9D"
             {
             "Name" = "8:Encryptor"
             "Arguments" = "8:"
@@ -497,10 +505,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_EB8607AA29394095A49AFE888D79AA9B"
+            "Target" = "8:_A136210A4897494A9370FC18FEBC7F0B"
             "Folder" = "8:_1725CBCB893349F9A6BC05F65E0AE275"
             "WorkingFolder" = "8:_415C8E35B8CA4B27A92BC41C175B58E2"
-            "Icon" = "8:_32E83056C8C04CE2AFD1206FCCE75CDB"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -902,9 +910,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EB8607AA29394095A49AFE888D79AA9B"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A136210A4897494A9370FC18FEBC7F0B"
             {
-            "SourcePath" = "8:..\\WindowsFormsApp1\\obj\\Debug\\Encryptor.exe"
+            "SourcePath" = "8:..\\api-encryping\\obj\\Debug\\api-encryping.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_415C8E35B8CA4B27A92BC41C175B58E2"
@@ -924,7 +932,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{CA9D10F6-58C2-4168-AD46-7A09BF0A6E66}"
+            "OutputProjectGuid" = "8:{97F38E6B-393A-422B-8D85-EABB020CFBFF}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

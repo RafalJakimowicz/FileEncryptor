@@ -3,7 +3,6 @@ D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\api-encryping.pdb
 D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\DotNetZip.dll
 D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\DotNetZip.pdb
 D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\DotNetZip.xml
-D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.csprojAssemblyReference.cache
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.csproj.CoreCompileInputs.cache
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.csproj.CopyComplete
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.dll
