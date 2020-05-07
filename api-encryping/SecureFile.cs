@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,16 @@ namespace api_encryping.secure
     {
         private string path;
         public string Path { get => path; set => path = value; }
-        public SecureFile(string _path)
+        public SecureFile()
         {
-            Path = _path;
+            if (Directory.Exists("./Secured"))
+            {
+                Directory.CreateDirectory("./Secured");
+            }
+        }
+        public void AddToSecure(string _path)
+        {
+
         }
     }
 }

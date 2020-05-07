@@ -7,3 +7,5 @@ D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.csproj.CoreComp
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.csproj.CopyComplete
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.dll
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.pdb
+D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\Newtonsoft.Json.xml
