@@ -52,55 +52,65 @@
             this.bwDecrypt = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tscbLang = new System.Windows.Forms.ToolStripComboBox();
+            this.tcEncrypting = new System.Windows.Forms.TabControl();
+            this.tbEncrypt = new System.Windows.Forms.TabPage();
+            this.tbSecure = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tcEncrypting.SuspendLayout();
+            this.tbEncrypt.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEncrypt
             // 
+            this.btnEncrypt.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnEncrypt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnEncrypt.Location = new System.Drawing.Point(396, 323);
+            this.btnEncrypt.Location = new System.Drawing.Point(545, 317);
             this.btnEncrypt.Name = "btnEncrypt";
             this.btnEncrypt.Size = new System.Drawing.Size(156, 57);
             this.btnEncrypt.TabIndex = 0;
             this.btnEncrypt.Text = "Encrypt";
-            this.btnEncrypt.UseVisualStyleBackColor = true;
+            this.btnEncrypt.UseVisualStyleBackColor = false;
             this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
             // btnDecrypt
             // 
+            this.btnDecrypt.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnDecrypt.Location = new System.Drawing.Point(6, 323);
+            this.btnDecrypt.Location = new System.Drawing.Point(26, 317);
             this.btnDecrypt.Name = "btnDecrypt";
             this.btnDecrypt.Size = new System.Drawing.Size(145, 57);
             this.btnDecrypt.TabIndex = 1;
             this.btnDecrypt.Text = "Decrypt";
-            this.btnDecrypt.UseVisualStyleBackColor = true;
+            this.btnDecrypt.UseVisualStyleBackColor = false;
             this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
             // txbPath
             // 
             this.txbPath.Enabled = false;
-            this.txbPath.Location = new System.Drawing.Point(9, 75);
+            this.txbPath.Location = new System.Drawing.Point(26, 60);
             this.txbPath.Name = "txbPath";
-            this.txbPath.Size = new System.Drawing.Size(497, 20);
+            this.txbPath.Size = new System.Drawing.Size(629, 20);
             this.txbPath.TabIndex = 2;
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(512, 72);
+            this.btnChoose.BackColor = System.Drawing.Color.Transparent;
+            this.btnChoose.Location = new System.Drawing.Point(661, 57);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(40, 25);
             this.btnChoose.TabIndex = 3;
             this.btnChoose.Text = "...";
-            this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.UseVisualStyleBackColor = false;
             this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
             // 
             // txbPass
             // 
             this.txbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txbPass.Location = new System.Drawing.Point(35, 181);
+            this.txbPass.Location = new System.Drawing.Point(120, 173);
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(322, 26);
             this.txbPass.TabIndex = 4;
@@ -111,7 +121,7 @@
             // rbFile
             // 
             this.rbFile.AutoSize = true;
-            this.rbFile.Location = new System.Drawing.Point(88, 140);
+            this.rbFile.Location = new System.Drawing.Point(186, 126);
             this.rbFile.Name = "rbFile";
             this.rbFile.Size = new System.Drawing.Size(41, 17);
             this.rbFile.TabIndex = 6;
@@ -122,7 +132,7 @@
             // rbDisc
             // 
             this.rbDisc.AutoSize = true;
-            this.rbDisc.Location = new System.Drawing.Point(171, 140);
+            this.rbDisc.Location = new System.Drawing.Point(269, 126);
             this.rbDisc.Name = "rbDisc";
             this.rbDisc.Size = new System.Drawing.Size(46, 17);
             this.rbDisc.TabIndex = 7;
@@ -132,9 +142,10 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(157, 356);
+            this.progressBar1.BackColor = System.Drawing.Color.White;
+            this.progressBar1.Location = new System.Drawing.Point(177, 350);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(233, 24);
+            this.progressBar1.Size = new System.Drawing.Size(362, 24);
             this.progressBar1.TabIndex = 8;
             // 
             // groupBox1
@@ -143,9 +154,9 @@
             this.groupBox1.Controls.Add(this.rbDelete);
             this.groupBox1.Controls.Add(this.lblParent);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(396, 103);
+            this.groupBox1.Location = new System.Drawing.Point(545, 84);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(156, 214);
+            this.groupBox1.Size = new System.Drawing.Size(156, 230);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -199,16 +210,16 @@
             this.groupBox2.Controls.Add(this.btnChoose);
             this.groupBox2.Controls.Add(this.rbFile);
             this.groupBox2.Controls.Add(this.txbPass);
-            this.groupBox2.Location = new System.Drawing.Point(12, 30);
+            this.groupBox2.Location = new System.Drawing.Point(18, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(558, 386);
+            this.groupBox2.Size = new System.Drawing.Size(741, 393);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
             // lblPercent
             // 
             this.lblPercent.AutoSize = true;
-            this.lblPercent.Location = new System.Drawing.Point(119, 271);
+            this.lblPercent.Location = new System.Drawing.Point(217, 259);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(48, 13);
             this.lblPercent.TabIndex = 16;
@@ -217,7 +228,7 @@
             // txbPercent
             // 
             this.txbPercent.Enabled = false;
-            this.txbPercent.Location = new System.Drawing.Point(171, 268);
+            this.txbPercent.Location = new System.Drawing.Point(269, 256);
             this.txbPercent.Name = "txbPercent";
             this.txbPercent.Size = new System.Drawing.Size(70, 20);
             this.txbPercent.TabIndex = 15;
@@ -225,7 +236,7 @@
             // txbConfirm
             // 
             this.txbConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.txbConfirm.Location = new System.Drawing.Point(35, 218);
+            this.txbConfirm.Location = new System.Drawing.Point(120, 210);
             this.txbConfirm.Name = "txbConfirm";
             this.txbConfirm.Size = new System.Drawing.Size(322, 26);
             this.txbConfirm.TabIndex = 13;
@@ -236,7 +247,7 @@
             // rbFolder
             // 
             this.rbFolder.AutoSize = true;
-            this.rbFolder.Location = new System.Drawing.Point(251, 140);
+            this.rbFolder.Location = new System.Drawing.Point(349, 126);
             this.rbFolder.Name = "rbFolder";
             this.rbFolder.Size = new System.Drawing.Size(54, 17);
             this.rbFolder.TabIndex = 12;
@@ -248,7 +259,7 @@
             // 
             this.lblProgress.AutoSize = true;
             this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblProgress.Location = new System.Drawing.Point(218, 33);
+            this.lblProgress.Location = new System.Drawing.Point(323, 26);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(95, 20);
             this.lblProgress.TabIndex = 11;
@@ -257,7 +268,7 @@
             // btnStop
             // 
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStop.Location = new System.Drawing.Point(236, 323);
+            this.btnStop.Location = new System.Drawing.Point(327, 317);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(76, 23);
             this.btnStop.TabIndex = 10;
@@ -279,16 +290,19 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.OldLace;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tscbLang});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(581, 27);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.Size = new System.Drawing.Size(802, 27);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tscbLang
             // 
+            this.tscbLang.BackColor = System.Drawing.SystemColors.Window;
             this.tscbLang.Items.AddRange(new object[] {
             "English",
             "Polish"});
@@ -297,16 +311,46 @@
             this.tscbLang.Text = "Language";
             this.tscbLang.SelectedIndexChanged += new System.EventHandler(this.tscbLang_SelectedIndexChanged);
             // 
+            // tcEncrypting
+            // 
+            this.tcEncrypting.Controls.Add(this.tbEncrypt);
+            this.tcEncrypting.Controls.Add(this.tbSecure);
+            this.tcEncrypting.Location = new System.Drawing.Point(8, 30);
+            this.tcEncrypting.Name = "tcEncrypting";
+            this.tcEncrypting.SelectedIndex = 0;
+            this.tcEncrypting.Size = new System.Drawing.Size(782, 437);
+            this.tcEncrypting.TabIndex = 12;
+            // 
+            // tbEncrypt
+            // 
+            this.tbEncrypt.BackColor = System.Drawing.Color.White;
+            this.tbEncrypt.Controls.Add(this.groupBox2);
+            this.tbEncrypt.Location = new System.Drawing.Point(4, 22);
+            this.tbEncrypt.Name = "tbEncrypt";
+            this.tbEncrypt.Padding = new System.Windows.Forms.Padding(3);
+            this.tbEncrypt.Size = new System.Drawing.Size(774, 411);
+            this.tbEncrypt.TabIndex = 0;
+            this.tbEncrypt.Text = "Encrypt";
+            // 
+            // tbSecure
+            // 
+            this.tbSecure.BackColor = System.Drawing.Color.White;
+            this.tbSecure.Location = new System.Drawing.Point(4, 22);
+            this.tbSecure.Name = "tbSecure";
+            this.tbSecure.Padding = new System.Windows.Forms.Padding(3);
+            this.tbSecure.Size = new System.Drawing.Size(774, 411);
+            this.tbSecure.TabIndex = 1;
+            this.tbSecure.Text = "Secured";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.FloralWhite;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(581, 422);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(802, 476);
+            this.Controls.Add(this.tcEncrypting);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -325,6 +369,8 @@
             this.groupBox2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tcEncrypting.ResumeLayout(false);
+            this.tbEncrypt.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,6 +401,9 @@
         private System.Windows.Forms.TextBox txbConfirm;
         private System.Windows.Forms.Label lblPercent;
         private System.Windows.Forms.TextBox txbPercent;
+        private System.Windows.Forms.TabControl tcEncrypting;
+        private System.Windows.Forms.TabPage tbEncrypt;
+        private System.Windows.Forms.TabPage tbSecure;
     }
 }
 
