@@ -20,7 +20,7 @@ namespace api_encryping.secure
         }
         public void AddToSecure(string _path)
         {
-
+            Path = _path;
         }
     }
 }

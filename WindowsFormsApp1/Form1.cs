@@ -578,5 +578,10 @@ namespace WindowsFormsApp1
             lblPercent.Text = langTable[18];
         }
         #endregion
+
+        private void btnGetAccess_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
