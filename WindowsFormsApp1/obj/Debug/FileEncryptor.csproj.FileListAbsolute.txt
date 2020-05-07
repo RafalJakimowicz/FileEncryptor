@@ -1,0 +1,16 @@
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Encryptor.exe.config
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Encryptor.exe
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Encryptor.pdb
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\api-encryping.dll
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DotNetZip.dll
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\api-encryping.pdb
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DotNetZip.pdb
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DotNetZip.xml
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\FileEncryptor.csprojAssemblyReference.cache
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Encryptor.Properties.Resources.resources
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\FileEncryptor.csproj.GenerateResource.cache
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\FileEncryptor.csproj.CoreCompileInputs.cache
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\FileEncryptor.csproj.CopyComplete
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Encryptor.exe
+D:\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Encryptor.pdb
