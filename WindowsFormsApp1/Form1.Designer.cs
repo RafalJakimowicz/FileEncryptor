@@ -56,8 +56,9 @@
             this.tbEncrypt = new System.Windows.Forms.TabPage();
             this.tbSecure = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGetAccess = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblSecured = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -339,10 +340,12 @@
             // tbSecure
             // 
             this.tbSecure.BackColor = System.Drawing.Color.White;
+            this.tbSecure.Controls.Add(this.lblSecured);
             this.tbSecure.Controls.Add(this.richTextBox1);
-            this.tbSecure.Controls.Add(this.button2);
+            this.tbSecure.Controls.Add(this.btnGetAccess);
             this.tbSecure.Controls.Add(this.button1);
             this.tbSecure.Location = new System.Drawing.Point(4, 22);
+            this.tbSecure.Margin = new System.Windows.Forms.Padding(0);
             this.tbSecure.Name = "tbSecure";
             this.tbSecure.Padding = new System.Windows.Forms.Padding(3);
             this.tbSecure.Size = new System.Drawing.Size(774, 411);
@@ -351,29 +354,44 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(309, 43);
+            this.button1.BackColor = System.Drawing.Color.OldLace;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(262, 22);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(113, 71);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Add File/Folder";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnGetAccess
             // 
-            this.button2.Location = new System.Drawing.Point(391, 42);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnGetAccess.BackColor = System.Drawing.Color.OldLace;
+            this.btnGetAccess.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGetAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnGetAccess.Location = new System.Drawing.Point(382, 22);
+            this.btnGetAccess.Name = "btnGetAccess";
+            this.btnGetAccess.Size = new System.Drawing.Size(104, 71);
+            this.btnGetAccess.TabIndex = 1;
+            this.btnGetAccess.Text = "Get Access";
+            this.btnGetAccess.UseVisualStyleBackColor = false;
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 134);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 112);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(761, 271);
+            this.richTextBox1.Size = new System.Drawing.Size(774, 299);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
+            // 
+            // lblSecured
+            // 
+            this.lblSecured.AutoSize = true;
+            this.lblSecured.Location = new System.Drawing.Point(7, 93);
+            this.lblSecured.Name = "lblSecured";
+            this.lblSecured.Size = new System.Drawing.Size(71, 13);
+            this.lblSecured.TabIndex = 3;
+            this.lblSecured.Text = "Secured Files";
             // 
             // Form1
             // 
@@ -405,6 +423,7 @@
             this.tcEncrypting.ResumeLayout(false);
             this.tbEncrypt.ResumeLayout(false);
             this.tbSecure.ResumeLayout(false);
+            this.tbSecure.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,8 +458,9 @@
         private System.Windows.Forms.TabPage tbEncrypt;
         private System.Windows.Forms.TabPage tbSecure;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGetAccess;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblSecured;
     }
 }
 
