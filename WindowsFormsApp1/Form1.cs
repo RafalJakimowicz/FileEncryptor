@@ -65,9 +65,7 @@ namespace WindowsFormsApp1
             aes = new AESCrypting();
         }
 
-        //#region Crypting RSA
-
-        //#endregion
+        #region Encrypt
 
         #region Controls
         private void txbConfirm_TextChanged(object sender, EventArgs e)
@@ -507,6 +505,12 @@ namespace WindowsFormsApp1
             }
             AllEnableTrue();
         }
+        #endregion
+
+        #endregion
+
+        #region Secure
+
         #endregion
 
         #region UI

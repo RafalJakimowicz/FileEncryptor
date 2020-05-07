@@ -55,11 +55,15 @@
             this.tcEncrypting = new System.Windows.Forms.TabControl();
             this.tbEncrypt = new System.Windows.Forms.TabPage();
             this.tbSecure = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tcEncrypting.SuspendLayout();
             this.tbEncrypt.SuspendLayout();
+            this.tbSecure.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEncrypt
@@ -335,12 +339,41 @@
             // tbSecure
             // 
             this.tbSecure.BackColor = System.Drawing.Color.White;
+            this.tbSecure.Controls.Add(this.richTextBox1);
+            this.tbSecure.Controls.Add(this.button2);
+            this.tbSecure.Controls.Add(this.button1);
             this.tbSecure.Location = new System.Drawing.Point(4, 22);
             this.tbSecure.Name = "tbSecure";
             this.tbSecure.Padding = new System.Windows.Forms.Padding(3);
             this.tbSecure.Size = new System.Drawing.Size(774, 411);
             this.tbSecure.TabIndex = 1;
             this.tbSecure.Text = "Secured";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(309, 43);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(391, 42);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(7, 134);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(761, 271);
+            this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
@@ -371,6 +404,7 @@
             this.menuStrip1.PerformLayout();
             this.tcEncrypting.ResumeLayout(false);
             this.tbEncrypt.ResumeLayout(false);
+            this.tbSecure.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,6 +438,9 @@
         private System.Windows.Forms.TabControl tcEncrypting;
         private System.Windows.Forms.TabPage tbEncrypt;
         private System.Windows.Forms.TabPage tbSecure;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
