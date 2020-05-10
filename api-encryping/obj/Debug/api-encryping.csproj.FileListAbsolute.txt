@@ -9,3 +9,4 @@ D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.dll
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.pdb
 D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.csprojAssemblyReference.cache

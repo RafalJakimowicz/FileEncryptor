@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Encryptor
+namespace api_encryping.aes
 {
     public class AESCrypting
     {
