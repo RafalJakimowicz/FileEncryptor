@@ -34,12 +34,27 @@ namespace api_encryping.secure
             try
             {
                 a.FileEncrypt(path, GetPassword.getPass(), FOLDER + fi.Name);
+                File.Delete(path);
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }  
+        }
+
+        public void GetAccess(string _path)
+        {
+            Path = _path;
+            FileInfo fi = new FileInfo(path);
+            try
+            {
+                a.FileDecrypt(FOLDER + fi.Name, GetPassword.getPass(), path);
+                File.Delete(path);
             }
-            File.Delete(path);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }  
         }
     }
 }
