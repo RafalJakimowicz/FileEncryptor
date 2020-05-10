@@ -15,9 +15,10 @@ namespace api_encryping.aes
     {
         const string SALT = "*sHa256";
         const string ZIPPASSWORD = "aEs_EnCrYpToR";
-        public AESCrypting()
+        bool toSecure;
+        public AESCrypting(bool _toSecure)
         {
-
+            toSecure = _toSecure;
         }
 
         #region Crypting AES
@@ -50,13 +51,21 @@ namespace api_encryping.aes
         /// </summary>
         /// <param name="inputFile"></param>
         /// <param name="password"></param>
-        public void FileEncrypt(string inputFile, string password)
+        public void FileEncrypt(string inputFile, string password, string outputFile)
         {
             //generate random salt
             byte[] salt = GenerateRandomSalt();
 
-            //create output file name
-            FileStream fsCrypt = new FileStream(inputFile + ".tge", FileMode.Create);
+            FileStream fsCrypt;
+            if (!toSecure)
+            {
+                //create output file name
+                fsCrypt = new FileStream(inputFile + ".tge", FileMode.Create);
+            }
+            else
+            {
+                fsCrypt = new FileStream(outputFile + ".tge", FileMode.Create);
+            }
 
             //convert password string to byte arrray
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(GeneratePassword(password));

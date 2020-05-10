@@ -1,4 +1,5 @@
 ﻿using api_encryping.aes;
+using Encryptor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,7 +63,7 @@ namespace WindowsFormsApp1
             txbConfirm.ForeColor = Color.Gray;
             txbPass.ForeColor = Color.Gray;
 
-            aes = new AESCrypting();
+            aes = new AESCrypting(false);
         }
 
         #region Encrypt
@@ -401,12 +402,12 @@ namespace WindowsFormsApp1
                         if (attr.HasFlag(FileAttributes.Directory))
                         {
                             string zipfile = aes.Ziping(FilePath);
-                            aes.FileEncrypt(zipfile, Password);
+                            aes.FileEncrypt(zipfile, Password, null);
                             File.Delete(zipfile);
                         }
                         else
                         {
-                            aes.FileEncrypt(FilePath, Password);
+                            aes.FileEncrypt(FilePath, Password, null);
                         }
 
                         //delete paretnt files
@@ -437,12 +438,12 @@ namespace WindowsFormsApp1
                             if (attr.HasFlag(FileAttributes.Directory))
                             {
                                 string zipfile = aes.Ziping(item);
-                                aes.FileEncrypt(zipfile, Password);
+                                aes.FileEncrypt(zipfile, Password, null);
                                 File.Delete(zipfile);
                             }
                             else
                             {
-                                aes.FileEncrypt(item, Password);
+                                aes.FileEncrypt(item, Password, null);
                             }
 
                             if (rbDelete.Checked && !attr.HasFlag(FileAttributes.Directory))
