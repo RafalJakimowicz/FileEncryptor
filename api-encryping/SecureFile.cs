@@ -39,8 +39,7 @@ namespace api_encryping.secure
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
+            File.Delete(path);
         }
     }
 }
