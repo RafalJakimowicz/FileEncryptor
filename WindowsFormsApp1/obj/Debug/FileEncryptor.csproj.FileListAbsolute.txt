@@ -30,3 +30,5 @@ C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\obj\Debug\FileEncryp
 C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\obj\Debug\FileEncryptor.csproj.CopyComplete
 C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\obj\Debug\Encryptor.exe
 C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\obj\Debug\Encryptor.pdb
+C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
