@@ -1,0 +1,2 @@
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.csprojAssemblyReference.cache
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.csproj.CoreCompileInputs.cache
