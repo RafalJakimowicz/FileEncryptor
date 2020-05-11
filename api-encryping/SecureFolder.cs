@@ -30,12 +30,12 @@ namespace api_encryping.secure
         public void AddToSecure(string _path)
         {
             Path = _path;
-            a.Ziping(path);
-            FileInfo fi = new FileInfo(path);
+            a.Ziping(_path);
+            FileInfo fi = new FileInfo(_path);
             try
             {
-                a.FileEncrypt(path, GetPassword.getPass(), FOLDER + fi.Name);
-                File.Delete(path);
+                a.FileEncrypt(_path, GetPassword.getPass(), FOLDER + fi.Name);
+                File.Delete(_path);
             }
             catch (Exception ex)
             {
@@ -45,17 +45,7 @@ namespace api_encryping.secure
 
         public void GetAccess(string _path)
         {
-            Path = _path;
-            FileInfo fi = new FileInfo(path);
-            try
-            {
-                a.FileDecrypt(FOLDER + fi.Name, GetPassword.getPass(), path);
-                File.Delete(path);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            
         }
     }
 }
