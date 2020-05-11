@@ -10,3 +10,15 @@ D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.pdb
 D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\WindowsFormsApp1\api-encryping\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\WindowsFormsApp1\api-encryping\obj\Debug\api-encryping.csprojAssemblyReference.cache
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\bin\Debug\api-encryping.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\bin\Debug\api-encryping.pdb
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\bin\Debug\DotNetZip.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\bin\Debug\DotNetZip.pdb
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\bin\Debug\DotNetZip.xml
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\obj\Debug\api-encryping.csprojAssemblyReference.cache
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\obj\Debug\api-encryping.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\obj\Debug\api-encryping.csproj.CopyComplete
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\obj\Debug\api-encryping.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-encryping\obj\Debug\api-encryping.pdb
