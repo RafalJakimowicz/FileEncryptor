@@ -64,7 +64,24 @@ namespace api_encryping.secure
 
         public void GetAccess(string _path)
         {
-            
+            List<FILEPATH> lf = jtp.Deserialize();
+            foreach (var item in lf)
+            {
+                if (item.PrevFile == _path)
+                {
+                    Paths = item;
+                    FileInfo fi = new FileInfo(Paths.NewFile);
+                    string pass = Path.GetFileNameWithoutExtension(fi.Name);
+                    password = pass;
+                    Thread t = new Thread(StartDecrypting);
+                    t.Start();
+                }
+            }
+        }
+
+        private void StartDecrypting()
+        {
+            a.FileDecrypt(Paths.NewFile, password, Paths.PrevFile);
         }
     }
 }
