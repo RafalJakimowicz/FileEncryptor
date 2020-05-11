@@ -95,6 +95,10 @@
       <Project>{97f38e6b-393a-422b-8d85-eabb020cfbff}</Project>
       <Name>api-encryping</Name>
     </ProjectReference>
+    <ProjectReference Include="..\api-securing\api-securing.csproj">
+      <Project>{2e6c56fa-e767-4e74-a69c-c8d5ccac7648}</Project>
+      <Name>api-securing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
