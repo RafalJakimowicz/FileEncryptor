@@ -82,7 +82,7 @@ namespace api_encryping.secure
 
         private void StartDecrypting()
         {
-            a.FileDecrypt(Paths.NewFile, password, Paths.PrevFile);
+            a.FileDecrypt(Paths.NewFile, Paths.PrevFile, password);
         }
     }
 }

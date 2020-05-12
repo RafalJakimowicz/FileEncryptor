@@ -16,9 +16,6 @@ namespace api_encryping.secure
     {
         private FILEPATH paths;
         private string password;
-        private string path;
-
-        public string Path { get => path; set => path = value; }
 
         private static string FOLDER = "./cache/secured";
         AESCrypting a;
@@ -72,14 +69,20 @@ namespace api_encryping.secure
             {
                 if(_path == item.PrevFile)
                 {
-
+                    paths = item;
+                    FileInfo fi = new FileInfo(item.NewFile);
+                    password = Path.GetFileNameWithoutExtension(fi.Name);
+                    Thread t = new Thread(StartDecrypting);
+                    t.Start();
                 }
             }
         }
 
         private void StartDecrypting()
         {
-            
+            a.FileDecrypt(paths.NewFile, paths.PrevFile, password);
+            a.Unziping(paths.PrevFile);
+            File.Delete(paths.PrevFile);
         }
     }
 }
