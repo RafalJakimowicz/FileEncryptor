@@ -1,4 +1,5 @@
 ﻿using api_encryping.aes;
+using api_encryping.jsons;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,8 +17,10 @@ namespace api_encryping.secure
 
         private static string FOLDER = "./cache/secured";
         AESCrypting a;
+        JsonsToPaths jtp;
         public SecureFolder()
         {
+            jtp = new JsonsToPaths();
             a = new AESCrypting(true);
             if (Directory.Exists(FOLDER))
             {
@@ -26,6 +29,11 @@ namespace api_encryping.secure
         }
 
         public void AddToSecure(string _path)
+        {
+
+        }
+
+        private void StartEncrypting()
         {
 
         }
