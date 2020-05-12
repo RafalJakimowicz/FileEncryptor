@@ -67,7 +67,19 @@ namespace api_encryping.secure
 
         public void GetAccess(string _path)
         {
+            List<FILEPATH> lf = jtp.Deserialize();
+            foreach (var item in lf)
+            {
+                if(_path == item.PrevFile)
+                {
 
+                }
+            }
+        }
+
+        private void StartDecrypting()
+        {
+            
         }
     }
 }
