@@ -32,3 +32,5 @@ C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\obj\Debug\Encryptor.
 C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\obj\Debug\Encryptor.pdb
 C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\bin\Debug\api-securing.dll
+C:\Users\lenovo\source\repos\FileEncryptor\WindowsFormsApp1\bin\Debug\api-securing.pdb

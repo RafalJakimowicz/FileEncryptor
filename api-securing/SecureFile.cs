@@ -53,6 +53,7 @@ namespace api_encryping.secure
             lf.Add(fp);
             Paths = fp;
             password = FileName;
+            jtp.Serialize(lf);
             Thread t = new Thread(StartEncrypting);
             t.Start();
         }

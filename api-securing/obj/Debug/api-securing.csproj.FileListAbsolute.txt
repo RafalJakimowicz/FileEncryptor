@@ -1,2 +1,14 @@
 C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.csprojAssemblyReference.cache
 C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\api-securing.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\api-securing.pdb
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\api-encryping.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\DotNetZip.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\api-encryping.pdb
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\DotNetZip.pdb
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\DotNetZip.xml
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.csproj.CopyComplete
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.dll
+C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.pdb
