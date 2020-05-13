@@ -14,7 +14,6 @@ namespace api_encryping.aes
     public class AESCrypting
     {
         const string SALT = "*sHa256";
-        const string ZIPPASSWORD = "aEs_EnCrYpToR";
         bool toSecure;
         public AESCrypting(bool _toSecure)
         {
@@ -212,7 +211,6 @@ namespace api_encryping.aes
             {
                 zip.AddDirectory(path, "Files");
                 zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Level6;
-                zip.Password = ZIPPASSWORD;
                 zip.Save(path + ".zip");
                 return path + ".zip";
             }
@@ -230,7 +228,6 @@ namespace api_encryping.aes
                 {
                     string output = path.Substring(0, path.Length - 4);
                     Directory.CreateDirectory(output);
-                    zip.Password = ZIPPASSWORD;
                     foreach (ZipEntry item in zip)
                     {
                         item.Extract(output, ExtractExistingFileAction.InvokeExtractProgressEvent);

@@ -53,13 +53,17 @@ namespace api_encryping.secure
             byte[] fileBytes = File.ReadAllBytes(_path);
             SHA1 hash = new SHA1CryptoServiceProvider();
             byte[] hashBytes = hash.ComputeHash(fileBytes);
-            string FileName = BitConverter.ToString(hashBytes);
+            var FileName = new StringBuilder();
+            foreach (byte b in hashBytes)
+            {
+                FileName.Append(b.ToString("x2"));
+            }
             FileInfo fi = new FileInfo(_path);
-            string newFileFullPath = FOLDER + "/" + FileName + fi.Extension;
+            string newFileFullPath = FOLDER + "/" + FileName.ToString() + fi.Extension;
             FILEPATH fp = new FILEPATH() { NewFile = newFileFullPath, PrevFile = _path };
             lf.Add(fp);
             Paths = fp;
-            password = FileName;
+            password = FileName.ToString();
             jtp.Serialize(lf);
             Thread t = new Thread(StartEncrypting);
             t.Start();

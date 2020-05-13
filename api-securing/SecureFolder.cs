@@ -53,10 +53,14 @@ namespace api_encryping.secure
             byte[] fileBytes = File.ReadAllBytes(pathToZip);
             SHA1 sha = new SHA1CryptoServiceProvider();
             byte[] hashBytes = sha.ComputeHash(fileBytes);
-            string name = BitConverter.ToString(hashBytes);
-            string newFileFullPath = FOLDER +"/"+ name + ".zip";
+            var FileName = new StringBuilder();
+            foreach (byte b in hashBytes)
+            {
+                FileName.Append(b.ToString("x2"));
+            }
+            string newFileFullPath = FOLDER +"/"+ FileName.ToString() + ".zip";
             paths = new FILEPATH() { NewFile = pathToZip, PrevFile = _path };
-            password = name;
+            password = FileName.ToString();
             lf.Add(paths);
             jtp.Serialize(lf);
             Thread t = new Thread(StartEncrypting);
