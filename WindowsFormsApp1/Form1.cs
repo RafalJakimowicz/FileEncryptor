@@ -54,10 +54,12 @@ namespace WindowsFormsApp1
             bwEncrypt.WorkerReportsProgress = true;
             bwEncrypt.WorkerSupportsCancellation = true;
             #endregion
+
             aes = new AESCrypting(false);
             sfile = new SecureFile();
             sfolder = new SecureFolder();
             jtf = new JsonsToPaths();
+
             rbFile.Checked = true;
             rbDontDelete.Checked = true;
             btnStop.Enabled = false;
