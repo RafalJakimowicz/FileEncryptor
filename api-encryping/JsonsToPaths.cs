@@ -27,7 +27,6 @@ namespace api_encryping.jsons
             {
                 Directory.CreateDirectory("./cache/secured/jsons");
                 using (FileStream f = File.Create(PATH_TO_JSON)) { }
-                Serialize(new List<FILEPATH>() { new FILEPATH() { NewFile = "", PrevFile = "" } });
             }
         }
         public void Serialize(List<FILEPATH> _pathes)
@@ -38,6 +37,7 @@ namespace api_encryping.jsons
         }
         public List<FILEPATH> Deserialize()
         {
+            if (String.IsNullOrEmpty(File.ReadAllText(PATH_TO_JSON))) { return null; }
             JObject o = JObject.Parse(File.ReadAllText(PATH_TO_JSON));
             JArray a = (JArray)o["Pathes"];
             return a.ToObject<List<FILEPATH>>();

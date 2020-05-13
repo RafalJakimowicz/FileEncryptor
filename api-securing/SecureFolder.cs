@@ -33,13 +33,20 @@ namespace api_encryping.secure
         public void AddToSecure(string _path)
         {
             List<FILEPATH> lf = jtp.Deserialize();
-            foreach (var item in lf)
+            if(!(lf == null))
             {
-                if(item.PrevFile == _path)
+                foreach (var item in lf)
                 {
-                    MessageBox.Show("That folder is already secured");
-                    return;
+                    if (item.PrevFile == _path)
+                    {
+                        MessageBox.Show("That folder is already secured");
+                        return;
+                    }
                 }
+            }
+            else
+            {
+                lf = new List<FILEPATH>();
             }
             a.Ziping(_path);
             string pathToZip = _path + ".zip";

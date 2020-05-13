@@ -573,7 +573,7 @@ namespace WindowsFormsApp1
 
         private void btnGetAccess_Click(object sender, EventArgs e)
         {
-            //TODO
+            
         }
 
         private void Form1_DragEnter(object sender, DragEventArgs e)
@@ -633,11 +633,19 @@ namespace WindowsFormsApp1
         private void RefreshListBox()
         {
             List<FILEPATH> ls = jtf.Deserialize();
-            lbSecuredFiles.Items.Clear();
-            foreach (var item in ls)
+            if (ls != null)
             {
-                lbSecuredFiles.Items.Add(item.PrevFile);
+                lbSecuredFiles.Items.Clear();
+                foreach (var item in ls)
+                {
+                    lbSecuredFiles.Items.Add(item.PrevFile);
+                }
             }
+        }
+
+        private void lbSecuredFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilePath = lbSecuredFiles.SelectedItem.ToString();
         }
     }
 }

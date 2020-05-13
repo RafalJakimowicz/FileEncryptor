@@ -35,13 +35,20 @@ namespace api_encryping.secure
         public void AddToSecure(string _path)
         {
             List<FILEPATH> lf = jtp.Deserialize();
-            foreach (var item in lf)
+            if(!(lf == null)) 
             {
-                if(item.PrevFile == _path)
+                foreach (var item in lf)
                 {
-                    MessageBox.Show("That file is already secured");
-                    return;
+                    if (item.PrevFile == _path)
+                    {
+                        MessageBox.Show("That file is already secured");
+                        return;
+                    }
                 }
+            }
+            else
+            {
+                lf = new List<FILEPATH>();
             }
             byte[] fileBytes = File.ReadAllBytes(_path);
             SHA1 hash = new SHA1CryptoServiceProvider();

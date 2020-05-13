@@ -345,6 +345,7 @@
             this.lbSecuredFiles.Name = "lbSecuredFiles";
             this.lbSecuredFiles.Size = new System.Drawing.Size(774, 303);
             this.lbSecuredFiles.TabIndex = 4;
+            this.lbSecuredFiles.SelectedIndexChanged += new System.EventHandler(this.lbSecuredFiles_SelectedIndexChanged);
             this.lbSecuredFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbSecuredFiles_DragDrop);
             this.lbSecuredFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbSecuredFiles_DragEnter);
             // 
