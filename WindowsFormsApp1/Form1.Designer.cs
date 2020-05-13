@@ -54,9 +54,9 @@
             this.tcEncrypting = new System.Windows.Forms.TabControl();
             this.tbEncrypt = new System.Windows.Forms.TabPage();
             this.tbSecure = new System.Windows.Forms.TabPage();
+            this.lbSecuredFiles = new System.Windows.Forms.ListBox();
             this.lblSecured = new System.Windows.Forms.Label();
             this.btnGetAccess = new System.Windows.Forms.Button();
-            this.lbSecuredFiles = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tcEncrypting.SuspendLayout();
@@ -338,6 +338,16 @@
             this.tbSecure.TabIndex = 1;
             this.tbSecure.Text = "Secure";
             // 
+            // lbSecuredFiles
+            // 
+            this.lbSecuredFiles.FormattingEnabled = true;
+            this.lbSecuredFiles.Location = new System.Drawing.Point(0, 109);
+            this.lbSecuredFiles.Name = "lbSecuredFiles";
+            this.lbSecuredFiles.Size = new System.Drawing.Size(774, 303);
+            this.lbSecuredFiles.TabIndex = 4;
+            this.lbSecuredFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbSecuredFiles_DragDrop);
+            this.lbSecuredFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbSecuredFiles_DragEnter);
+            // 
             // lblSecured
             // 
             this.lblSecured.AutoSize = true;
@@ -359,14 +369,6 @@
             this.btnGetAccess.Text = "Get Access";
             this.btnGetAccess.UseVisualStyleBackColor = false;
             this.btnGetAccess.Click += new System.EventHandler(this.btnGetAccess_Click);
-            // 
-            // lbSecuredFiles
-            // 
-            this.lbSecuredFiles.FormattingEnabled = true;
-            this.lbSecuredFiles.Location = new System.Drawing.Point(0, 109);
-            this.lbSecuredFiles.Name = "lbSecuredFiles";
-            this.lbSecuredFiles.Size = new System.Drawing.Size(774, 303);
-            this.lbSecuredFiles.TabIndex = 4;
             // 
             // Form1
             // 

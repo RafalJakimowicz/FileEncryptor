@@ -25,6 +25,8 @@ namespace api_encryping.jsons
         {
             if (!File.Exists(PATH_TO_JSON))
             {
+                Directory.CreateDirectory("./cache/secured/jsons");
+                using (FileStream f = File.Create(PATH_TO_JSON)) { }
                 Serialize(new List<FILEPATH>() { new FILEPATH() { NewFile = "", PrevFile = "" } });
             }
         }

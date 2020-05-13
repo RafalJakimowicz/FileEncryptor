@@ -1,4 +1,6 @@
 ﻿using api_encryping.aes;
+using api_encryping.jsons;
+using api_encryping.secure;
 using Encryptor;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,9 @@ namespace WindowsFormsApp1
         bool stop = false;
         TranslateText tt;
         AESCrypting aes;
+        JsonsToPaths jtf;
+        SecureFile sfile;
+        SecureFolder sfolder;
         Langs lang;
         #endregion
 
@@ -64,6 +69,9 @@ namespace WindowsFormsApp1
             txbPass.ForeColor = Color.Gray;
 
             aes = new AESCrypting(false);
+            sfile = new SecureFile();
+            sfolder = new SecureFolder();
+            jtf = new JsonsToPaths();
         }
 
         #region Encrypt
@@ -583,6 +591,49 @@ namespace WindowsFormsApp1
         private void btnGetAccess_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lbSecuredFiles_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void lbSecuredFiles_DragDrop(object sender, DragEventArgs e)
+        {
+            FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
+            try
+            {
+                FileAttributes fa = File.GetAttributes(FilePath);
+                if((fa & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    sfile.AddToSecure(FilePath);
+                }
+                else
+                {
+                    sfolder.AddToSecure(FilePath);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void RefreshListBox()
+        {
+            List<FILEPATH> ls = jtf.Deserialize();
+            lbSecuredFiles.Items.Clear();
+            foreach (var item in ls)
+            {
+                lbSecuredFiles.Items.Add(item.PrevFile);
+            }
         }
     }
 }

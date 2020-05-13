@@ -12,3 +12,17 @@ C:\Users\lenovo\source\repos\FileEncryptor\api-securing\bin\Debug\DotNetZip.xml
 C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.csproj.CopyComplete
 C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.dll
 C:\Users\lenovo\source\repos\FileEncryptor\api-securing\obj\Debug\api-securing.pdb
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\api-securing.dll
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\api-securing.pdb
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\api-encryping.dll
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\DotNetZip.dll
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\api-encryping.pdb
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\DotNetZip.pdb
+D:\GitHub\WindowsFormsApp1\api-securing\bin\Debug\DotNetZip.xml
+D:\GitHub\WindowsFormsApp1\api-securing\obj\Debug\api-securing.csprojAssemblyReference.cache
+D:\GitHub\WindowsFormsApp1\api-securing\obj\Debug\api-securing.csproj.CoreCompileInputs.cache
+D:\GitHub\WindowsFormsApp1\api-securing\obj\Debug\api-securing.csproj.CopyComplete
+D:\GitHub\WindowsFormsApp1\api-securing\obj\Debug\api-securing.dll
+D:\GitHub\WindowsFormsApp1\api-securing\obj\Debug\api-securing.pdb
