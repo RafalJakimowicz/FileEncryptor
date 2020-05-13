@@ -54,24 +54,23 @@ namespace WindowsFormsApp1
             bwEncrypt.WorkerReportsProgress = true;
             bwEncrypt.WorkerSupportsCancellation = true;
             #endregion
-
+            aes = new AESCrypting(false);
+            sfile = new SecureFile();
+            sfolder = new SecureFolder();
+            jtf = new JsonsToPaths();
             rbFile.Checked = true;
             rbDontDelete.Checked = true;
             btnStop.Enabled = false;
 
             tt = new TranslateText();
             TranslateFromList(tt.TranslateToTable(Langs.lang_eng));
+            RefreshListBox();
             lang = Langs.lang_eng;
 
             files = new List<string>();
 
             txbConfirm.ForeColor = Color.Gray;
             txbPass.ForeColor = Color.Gray;
-
-            aes = new AESCrypting(false);
-            sfile = new SecureFile();
-            sfolder = new SecureFolder();
-            jtf = new JsonsToPaths();
         }
 
         #region Encrypt
@@ -80,24 +79,6 @@ namespace WindowsFormsApp1
         private void txbConfirm_TextChanged(object sender, EventArgs e)
         {
             Confirmed = txbConfirm.Text;
-        }
-
-        private void Form1_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
-        }
-
-        private void Form1_DragDrop(object sender, DragEventArgs e)
-        {
-            FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
-            txbPath.Text = FilePath;
         }
 
         private void btnEncrypt_Click(object sender, EventArgs e)
@@ -593,6 +574,43 @@ namespace WindowsFormsApp1
 
         }
 
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
+            try
+            {
+                FileAttributes fa = File.GetAttributes(FilePath);
+                if ((fa & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    sfolder.AddToSecure(FilePath);
+                }
+                else
+                {
+                    sfile.AddToSecure(FilePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                RefreshListBox();
+            }
+        }
+
         private void lbSecuredFiles_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -608,22 +626,6 @@ namespace WindowsFormsApp1
         private void lbSecuredFiles_DragDrop(object sender, DragEventArgs e)
         {
             FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
-            try
-            {
-                FileAttributes fa = File.GetAttributes(FilePath);
-                if((fa & FileAttributes.Directory) == FileAttributes.Directory)
-                {
-                    sfile.AddToSecure(FilePath);
-                }
-                else
-                {
-                    sfolder.AddToSecure(FilePath);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void RefreshListBox()
