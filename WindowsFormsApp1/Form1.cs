@@ -1,6 +1,5 @@
 ﻿using api_encryping.aes;
 using api_encryping.jsons;
-using api_encryping.secure;
 using Encryptor;
 using System;
 using System.Collections.Generic;
@@ -32,8 +31,6 @@ namespace WindowsFormsApp1
         TranslateText tt;
         AESCrypting aes;
         JsonsToPaths jtf;
-        SecureFile sfile;
-        SecureFolder sfolder;
         Langs lang;
         #endregion
 
@@ -56,8 +53,6 @@ namespace WindowsFormsApp1
             #endregion
 
             aes = new AESCrypting(false);
-            sfile = new SecureFile();
-            sfolder = new SecureFolder();
             jtf = new JsonsToPaths();
 
             rbFile.Checked = true;
@@ -66,7 +61,6 @@ namespace WindowsFormsApp1
 
             tt = new TranslateText();
             TranslateFromList(tt.TranslateToTable(Langs.lang_eng));
-            RefreshListBox();
             lang = Langs.lang_eng;
 
             files = new List<string>();
@@ -330,6 +324,7 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show(ex.Message);
                 }
+                progressBar1.Value = progressBar1.Maximum;
             }
             else
             {
@@ -501,9 +496,6 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        #region Secure
-
-        #endregion
 
         #region UI
         /// <summary>
@@ -571,10 +563,6 @@ namespace WindowsFormsApp1
         }
         #endregion
 
-        private void btnGetAccess_Click(object sender, EventArgs e)
-        {
-        }
-
         private void Form1_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -590,61 +578,7 @@ namespace WindowsFormsApp1
         private void Form1_DragDrop(object sender, DragEventArgs e)
         {
             FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
-            try
-            {
-                FileAttributes fa = File.GetAttributes(FilePath);
-                if ((fa & FileAttributes.Directory) == FileAttributes.Directory)
-                {
-                    sfolder.AddToSecure(FilePath);
-                }
-                else
-                {
-                    sfile.AddToSecure(FilePath);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                RefreshListBox();
-            }
-        }
-
-        private void lbSecuredFiles_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
-        }
-
-        private void lbSecuredFiles_DragDrop(object sender, DragEventArgs e)
-        {
-            FilePath = ((string[])e.Data.GetData(DataFormats.FileDrop, false))[0];
-        }
-
-        private void RefreshListBox()
-        {
-            List<FILEPATH> ls = jtf.Deserialize();
-            if (ls != null)
-            {
-                lbSecuredFiles.Items.Clear();
-                foreach (var item in ls)
-                {
-                    lbSecuredFiles.Items.Add(item.PrevFile);
-                }
-            }
-        }
-
-        private void lbSecuredFiles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FilePath = lbSecuredFiles.SelectedItem.ToString();
+            txbPath.Text = FilePath;
         }
     }
 }

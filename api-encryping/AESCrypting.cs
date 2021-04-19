@@ -1,6 +1,7 @@
 ﻿using Ionic.Zip;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -158,11 +159,11 @@ namespace api_encryping.aes
             }
             catch (CryptographicException ex_CryptographicException)
             {
-                Console.WriteLine("CryptographicException error: " + ex_CryptographicException.Message);
+                Debug.WriteLine("CryptographicException error: " + ex_CryptographicException.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Debug.WriteLine("Error: " + ex.Message);
             }
 
             try

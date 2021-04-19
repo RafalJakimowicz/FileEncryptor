@@ -59,7 +59,7 @@ namespace api_encryping.secure
                 FileName.Append(b.ToString("x2"));
             }
             FileInfo fi = new FileInfo(_path);
-            string newFileFullPath = FOLDER + "/" + FileName.ToString() + fi.Extension;
+            string newFileFullPath = FOLDER + "/" + FileName.ToString() + fi.Extension + ".tge";
             FILEPATH fp = new FILEPATH() { NewFile = newFileFullPath, PrevFile = _path };
             lf.Add(fp);
             Paths = fp;

@@ -58,8 +58,8 @@ namespace api_encryping.secure
             {
                 FileName.Append(b.ToString("x2"));
             }
-            string newFileFullPath = FOLDER +"/"+ FileName.ToString() + ".zip";
-            paths = new FILEPATH() { NewFile = pathToZip, PrevFile = _path };
+            string newFileFullPath = FOLDER +"/"+ FileName.ToString() + ".zip.tge";
+            paths = new FILEPATH() { NewFile = newFileFullPath, PrevFile = pathToZip };
             password = FileName.ToString();
             lf.Add(paths);
             jtp.Serialize(lf);
